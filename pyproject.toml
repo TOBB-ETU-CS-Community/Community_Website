@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "community-website"
+version = "0.1.0"
+description = "It is the website of our community that shows our board, past activities, and future plans."
+authors = ["fotino21 <ataturhan21@gmail.com>"]
+license = "GPL-v3"
+readme = "README.md"
+packages = [{include = "community_website"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+streamlit = "^1.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
