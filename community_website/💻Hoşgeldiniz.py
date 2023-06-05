@@ -4,7 +4,7 @@ from modules.configurations import add_bg_from_local
 
 def main():
     st.set_page_config(
-        page_title="Bilgisayar Topluluğu",
+        page_title="💻Bilgisayar Topluluğu",
         page_icon="💻",
         layout="wide",
         initial_sidebar_state="expanded",
