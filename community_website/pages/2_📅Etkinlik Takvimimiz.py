@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import datetime, timedelta
 
 import pandas as pd
 import streamlit as st
@@ -8,6 +8,7 @@ from calendar_view.core import data
 from calendar_view.core.config import CalendarConfig
 from calendar_view.core.event import Event, EventStyles
 from modules.configurations import add_bg_from_local
+from streamlit_timeline import st_timeline
 
 
 def load_calendar_excel():
@@ -93,38 +94,34 @@ def main():
     add_bg_from_local("input/background.png")
 
     st.markdown(
-        "<h1 style='text-align: center; color: black; font-size: 40px;'> Etkinlik takvimimize aşağıdaki \
-             araç yardımıyla tarih aralığını seçerek ulaşabilirsiniz </h1> \
+        "<h1 style='text-align: center; color: black; font-size: 40px;'> Etkinlik takvimimizi aşağıdaki \
+            zaman çizelgesi üzerinden inceleyebilirsiniz </h1> \
         <br> <br>",
         unsafe_allow_html=True,
     )
-    _, col1, col2, _ = st.columns([1, 2, 2, 1])
-    start_date = col1.date_input(
-        "Tarih aralığının başlangıcını seçin:",
-        min_value=date(2022, 3, 31),
-        max_value=date.today() + pd.DateOffset(months=2),
-    )
-    end_date = col2.date_input(
-        "Tarih aralığının sonunu seçin:",
-        min_value=date(2022, 3, 31),
-        max_value=date.today() + pd.DateOffset(months=2),
-    )
 
-    st.markdown(
-        "<br>",
-        unsafe_allow_html=True,
+    calendar = load_calendar_excel()
+
+    items = []
+    original_format = "%d.%m.%Y"
+    new_format = "%Y-%m-%d"
+    for i in range(len(calendar)):
+        date_string = calendar["Tarih"][i]
+        date_object = datetime.strptime(date_string, original_format)
+        new_date_string = date_object.strftime(new_format)
+
+        item = {
+            "id": i,
+            "content": calendar["İsim"][i],
+            "start": new_date_string,
+        }
+        items.append(item)
+
+    timeline = st_timeline(items, groups=[], options={}, height="400px")
+    st.subheader(
+        "Etkinlik hakkında detaylı bilgi almak için etkinlik kutucuğunun üstüne tıklayın."
     )
-
-    _, center_col, _ = st.columns([3, 3, 1])
-
-    st.markdown(
-        "<br>",
-        unsafe_allow_html=True,
-    )
-
-    if center_col.button("Takvimi Getir"):
-        calendar = load_calendar_excel()
-        show_calendar(calendar, start_date, end_date)
+    st.write(timeline["content"])
 
 
 if __name__ == "__main__":
