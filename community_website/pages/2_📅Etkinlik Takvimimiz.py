@@ -121,7 +121,8 @@ def main():
     st.subheader(
         "Etkinlik hakkında detaylı bilgi almak için etkinlik kutucuğunun üstüne tıklayın."
     )
-    st.write(timeline["content"])
+    if timeline is not None:
+        st.write(timeline["content"])
 
 
 if __name__ == "__main__":
