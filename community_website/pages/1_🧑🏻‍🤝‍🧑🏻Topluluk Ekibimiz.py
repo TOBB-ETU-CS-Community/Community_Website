@@ -18,7 +18,7 @@ def main():
         },
     )
 
-    add_bg_from_local("input/background.png")
+    add_bg_from_local("input/Community Logo.png", "input/Lila Gradient.png")
 
     ekip = pd.read_excel(
         "input/Topluluk Ekibi.xlsx",

@@ -3,7 +3,7 @@ from modules.configurations import add_bg_from_local, local_css
 
 
 def main():
-    add_bg_from_local("input/background.png")
+    add_bg_from_local("input/Community Logo.png", "input/Lila Gradient.png")
     local_css("style/style.css")
 
     st.markdown(

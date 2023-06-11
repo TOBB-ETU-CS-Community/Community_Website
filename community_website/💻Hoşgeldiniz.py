@@ -15,7 +15,7 @@ def main():
             Her türlü geri bildiriminize her zaman açığız.",
         },
     )
-    add_bg_from_local("input/background.png")
+    add_bg_from_local("input/Community Logo.png", "input/Lila Gradient.png")
 
     st.markdown(
         "<h1 style='text-align: center; color: black; font-size: 60px;'> TOBB ETU Bilgisayar Topluluğu Web Sayfasına Hoşgeldiniz 👋</h1> \
