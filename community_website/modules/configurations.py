@@ -15,7 +15,7 @@ def add_bg_from_local(background_file, sidebar_background_file):
             background-size: 1500px 700px;
         }}
 
-        section[data-testid="stSidebar"] div[class="css-6qob1r e1fqkh3o3"] {{
+        section[data-testid="stSidebar"] {{
             background-image: url(data:image/png;base64,{sidebar_encoded_string.decode()});
             background-size: 400px 800px;
         }}
