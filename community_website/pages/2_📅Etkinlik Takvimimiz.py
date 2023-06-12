@@ -96,7 +96,7 @@ def main():
     st.markdown(
         "<h1 style='text-align: center; color: black; font-size: 40px;'> Etkinlik takvimimizi aşağıdaki \
             zaman çizelgesi üzerinden inceleyebilirsiniz </h1> \
-        <br> <br>",
+        ",
         unsafe_allow_html=True,
     )
 
@@ -105,24 +105,48 @@ def main():
     items = []
     original_format = "%d.%m.%Y"
     new_format = "%Y-%m-%d"
+
     for i in range(len(calendar)):
         date_string = calendar["Tarih"][i]
         date_object = datetime.strptime(date_string, original_format)
         new_date_string = date_object.strftime(new_format)
 
+        clubs = {
+            "Bilgisayar Topluluğu": 1,
+            "Blockchain Kulübü": 2,
+            "Yapay Zeka Kulübü": 3,
+            "Oyun Geliştirme Kulübü": 4,
+            "Uygulama Geliştirme Kulübü": 5,
+        }
+        reversed_clubs = {v: k for k, v in clubs.items()}
         item = {
             "id": i,
             "content": calendar["İsim"][i],
-            "start": new_date_string,
+            "start": new_date_string
+            + " "
+            + str(calendar["Başlangıç Saati"][i])
+            + ":00",
+            "group": clubs[calendar["Düzenleyen"][i]],
+            "selectable": True,
         }
         items.append(item)
 
-    timeline = st_timeline(items, groups=[], options={}, height="400px")
-    st.subheader(
-        "Etkinlik hakkında detaylı bilgi almak için etkinlik kutucuğunun üstüne tıklayın."
+    timeline = st_timeline(items, groups=[], options={}, height="500px")
+    st.markdown(
+        """<h1 style='text-align: center; color: black; font-size: 30px;'> Etkinliğin hangi
+        kulüp tarafından yapıldığını öğrenmek için etkinliğin üstüne tıklayın. </h1>
+        """,
+        unsafe_allow_html=True,
     )
+
     if timeline is not None:
-        st.write(timeline["content"])
+        st.markdown(
+            f"""<h1 style='text-align: center; font-size: 25px;'>
+            Bu etkinlik, {reversed_clubs[timeline['group']]} tarafından düzenlenmiştir.
+             </h1>
+        """,
+            unsafe_allow_html=True,
+        )
 
 
 if __name__ == "__main__":
