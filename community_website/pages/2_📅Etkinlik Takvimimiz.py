@@ -126,27 +126,11 @@ def main():
             + " "
             + str(calendar["Başlangıç Saati"][i])
             + ":00",
-            "group": clubs[calendar["Düzenleyen"][i]],
-            "selectable": True,
+            "title": calendar["Düzenleyen"][i],
         }
         items.append(item)
 
     timeline = st_timeline(items, groups=[], options={}, height="500px")
-    st.markdown(
-        """<h1 style='text-align: center; color: black; font-size: 30px;'> Etkinliğin hangi
-        kulüp tarafından yapıldığını öğrenmek için etkinliğin üstüne tıklayın. </h1>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    if timeline is not None:
-        st.markdown(
-            f"""<h1 style='text-align: center; font-size: 25px;'>
-            Bu etkinlik, {reversed_clubs[timeline['group']]} tarafından düzenlenmiştir.
-             </h1>
-        """,
-            unsafe_allow_html=True,
-        )
 
 
 if __name__ == "__main__":
