@@ -11,6 +11,7 @@ from modules.configurations import add_bg_from_local
 from streamlit_timeline import st_timeline
 
 
+@st.cache_data
 def load_calendar_excel():
     calendar = pd.read_excel(
         "input/Etkinlik Takvimi.xlsx",

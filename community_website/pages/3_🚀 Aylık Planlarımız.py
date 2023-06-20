@@ -6,6 +6,7 @@ import streamlit as st
 from modules.configurations import add_bg_from_local
 
 
+@st.cache_data
 def load_plan_excel():
     plan = pd.read_excel(
         "input/Aylık Plan.xlsx",
