@@ -67,7 +67,7 @@ def main():
         initial_sidebar_state="expanded",
         menu_items={
             "Get Help": "https://github.com/TOBB-ETU-CS-Community",
-            "Report a bug": "https://tobbetu-bilgisayar-toplulugu.streamlit.app/Geri Bildirim Formu",
+            "Report a bug": "https://tobbetu-bilgisayar-toplulugu.streamlit.app/Geri_Bildirim_Formu",
             "About": "Topluluğumuza ait web sayfasında bize dair pek çok bilgiye ulaşabilirsiniz. \
             Her türlü geri bildiriminize her zaman açığız.",
         },
