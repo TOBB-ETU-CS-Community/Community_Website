@@ -1,26 +1,33 @@
 import pandas as pd
 import streamlit as st
-from modules.configurations import add_bg_from_local
+from modules.utils import add_bg_from_local, set_page_config
 from streamlit.components.v1 import html
 
 
+def get_name_role(name: str, role: str, align: str = "left"):
+    return f"""<div style='text-align: {align};  font-size: 20px;'>
+            {name}
+            <br>
+            {role}
+            </div>"""
+
+
+def get_linkedin_badge(name: str):
+    return f"""<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+                <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL"
+                data-vanity="{name}" data-version="v1"><a class="badge-base__link LI-simple-link"
+                href="https://tr.linkedin.com/in/{name}/en?trk=profile-badge"></a></div>"""
+
+
 def main():
-    st.set_page_config(
-        page_title="💻Bilgisayar Topluluğu",
-        page_icon="💻",
-        layout="wide",
-        initial_sidebar_state="expanded",
-        menu_items={
-            "Get Help": "https://github.com/TOBB-ETU-CS-Community",
-            "Report a bug": "https://tobbetu-bilgisayar-toplulugu.streamlit.app/Geri_Bildirim_Formu",
-            "About": "Topluluğumuza ait web sayfasında bize dair pek çok bilgiye ulaşabilirsiniz. \
-                Her türlü geri bildiriminize her zaman açığız.",
-        },
+    set_page_config()
+
+    add_bg_from_local(
+        background_file="input/Community Logo.png",
+        sidebar_background_file="input/Lila Gradient.png",
     )
 
-    add_bg_from_local("input/Community Logo.png", "input/Lila Gradient.png")
-
-    ekip = pd.read_excel(
+    team = pd.read_excel(
         "input/Topluluk Ekibi.xlsx",
         sheet_name="Sheet1",
     )
@@ -30,9 +37,7 @@ def main():
     for i in range(3):
         cols[i].markdown(
             f"""
-            <div style='text-align: left;  font-size: 20px;'>
-            {ekip.iloc[i, 0] + ' <br> ' + ekip.iloc[i, 2]}
-            </div>
+           {get_name_role(team.iloc[i, 0], team.iloc[i, 2])}
             """,
             unsafe_allow_html=True,
         )
@@ -40,23 +45,21 @@ def main():
         with cols[i]:
             html(
                 f"""
-                <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-                <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL"
-                data-vanity="{ekip.iloc[i, 3]}" data-version="v1"><a class="badge-base__link LI-simple-link"
-                href="https://tr.linkedin.com/in/{ekip.iloc[i, 3]}/en?trk=profile-badge"></a></div>
+                {get_linkedin_badge(team.iloc[i, 3])}
                 """,
                 height=300,
                 width=350,
             )
 
     st.markdown(
-        """
-        <hr>
-        """,
+        f"""
+           <hr>
+           <br>
+            """,
         unsafe_allow_html=True,
     )
 
-    cols = st.columns(4, gap="small")
+    cols = st.columns(4, gap="medium")
     clubs = [
         "Blockchain Kulübü",
         "Yapay Zeka Kulübü",
@@ -65,14 +68,12 @@ def main():
     ]
 
     for c in range(4):
-        club_team = ekip.query(f"Grup=='{clubs[c]}'")
+        club_team = team.query(f"Grup=='{clubs[c]}'")
 
         for i in range(len(club_team)):
             cols[c].markdown(
                 f"""
-                <div style='text-align: center;  font-size: 20px;'>
-                {club_team.iloc[i, 0] + ' <br> ' + club_team.iloc[i, 1]}
-                </div>
+                {get_name_role(club_team.iloc[i, 0] , club_team.iloc[i, 1], "center")}
                 """,
                 unsafe_allow_html=True,
             )
@@ -80,10 +81,7 @@ def main():
             with cols[c]:
                 html(
                     f"""
-                    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-                    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL"
-                    data-vanity="{club_team.iloc[i, 3]}" data-version="v1"><a class="badge-base__link LI-simple-link"
-                    href="https://tr.linkedin.com/in/{club_team.iloc[i, 3]}/en?trk=profile-badge"></a></div>
+                    {get_linkedin_badge(club_team.iloc[i, 3])}
                     """,
                     height=300,
                     width=350,
@@ -91,13 +89,11 @@ def main():
 
     _, col2, _ = st.columns(3)
 
-    siber_ekibi = ekip.query("Grup=='Siber Güvenlik Kulübü'")
+    siber_ekibi = team.query("Grup=='Siber Güvenlik Kulübü'")
     for i in range(len(siber_ekibi)):
         col2.markdown(
             f"""
-            <div style='text-align: left;  font-size: 20px;'>
-            {siber_ekibi.iloc[i, 0] + ' <br> ' + siber_ekibi.iloc[i, 1]}
-            </div>
+            {get_name_role(siber_ekibi.iloc[i, 0] , siber_ekibi.iloc[i, 1], "center")}
             """,
             unsafe_allow_html=True,
         )
@@ -105,10 +101,7 @@ def main():
         with col2:
             html(
                 f"""
-                <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-                <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL"
-                data-vanity="{siber_ekibi.iloc[i, 3]}" data-version="v1"><a class="badge-base__link LI-simple-link"
-                href="https://tr.linkedin.com/in/{siber_ekibi.iloc[i, 3]}/en?trk=profile-badge"></a></div>
+                {get_linkedin_badge(siber_ekibi.iloc[i, 3])}
                 """,
                 height=300,
                 width=350,
