@@ -1,21 +1,14 @@
 import streamlit as st
-from modules.configurations import add_bg_from_local, local_css
+from modules.utils import add_bg_from_local, local_css, set_page_config
 
 
 def main():
-    st.set_page_config(
-        page_title="💻Bilgisayar Topluluğu",
-        page_icon="💻",
-        layout="wide",
-        initial_sidebar_state="expanded",
-        menu_items={
-            "Get Help": "https://github.com/TOBB-ETU-CS-Community",
-            "Report a bug": "https://tobbetu-bilgisayar-toplulugu.streamlit.app/Geri_Bildirim_Formu",
-            "About": "Topluluğumuza ait web sayfasında bize dair pek çok bilgiye ulaşabilirsiniz. \
-            Her türlü geri bildiriminize her zaman açığız.",
-        },
+    set_page_config()
+
+    add_bg_from_local(
+        background_file="input/Community Logo.png",
+        sidebar_background_file="input/Lila Gradient.png",
     )
-    add_bg_from_local("input/Community Logo.png", "input/Lila Gradient.png")
     local_css("style/style.css")
 
     st.markdown(
