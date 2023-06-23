@@ -1,25 +1,6 @@
-from datetime import datetime
-
-import pandas as pd
 import plotly.express as px
 import streamlit as st
-from modules.configurations import add_bg_from_local
-
-
-@st.cache_data
-def load_plan_excel():
-    plan = pd.read_excel(
-        "input/Aylık Plan.xlsx",
-        sheet_name="Sheet1",
-    )
-    original_format = "%d.%m.%Y"
-    new_format = "%Y-%m-%d"
-    for i in range(len(plan)):
-        date_string = plan["Başlangıç"][i]
-        date_object = datetime.strptime(date_string, original_format)
-        new_date_string = date_object.strftime(new_format)
-        plan["Başlangıç"][i] = new_date_string
-    return plan
+from modules.utils import add_bg_from_local, load_excel, set_page_config
 
 
 def draw_gantt_chart(plan):
@@ -60,19 +41,12 @@ def draw_gantt_chart(plan):
 
 
 def main():
-    st.set_page_config(
-        page_title="💻Bilgisayar Topluluğu",
-        page_icon="💻",
-        layout="wide",
-        initial_sidebar_state="expanded",
-        menu_items={
-            "Get Help": "https://github.com/TOBB-ETU-CS-Community",
-            "Report a bug": "https://tobbetu-bilgisayar-toplulugu.streamlit.app/Geri_Bildirim_Formu",
-            "About": "Topluluğumuza ait web sayfasında bize dair pek çok bilgiye ulaşabilirsiniz. \
-            Her türlü geri bildiriminize her zaman açığız.",
-        },
+    set_page_config()
+
+    add_bg_from_local(
+        background_file="input/Community Logo.png",
+        sidebar_background_file="input/Lila Gradient.png",
     )
-    add_bg_from_local("input/Community Logo.png", "input/Lila Gradient.png")
 
     st.markdown(
         "<h1 style='text-align: center; color: black; font-size: 40px;'> Aylık planlarımızı aşağıdaki \
@@ -81,7 +55,11 @@ def main():
         unsafe_allow_html=True,
     )
 
-    plan = load_plan_excel()
+    plan = load_excel(
+        file="input/Aylık Plan.xlsx",
+        date_column="Başlangıç",
+        new_format="%Y-%m-%d",
+    )
 
     chart = draw_gantt_chart(plan)
 
