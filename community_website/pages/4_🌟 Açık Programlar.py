@@ -1,44 +1,28 @@
-from datetime import datetime
+from datetime import date, datetime
 
 import pandas as pd
 import streamlit as st
-from modules.configurations import add_bg_from_local
+from modules.utils import add_bg_from_local, load_excel, set_page_config
 from PIL import Image
 
 
 @st.cache_data
-def load_program_excel():
-    programlar = pd.read_excel(
-        "input/Programlar.xlsx",
-        sheet_name="Sheet1",
-    )
-    original_format = "%d.%m.%Y"
-    new_format = "%d-%m-%Y"
-    for i in range(len(programlar)):
-        date_string = programlar["Bitiş"][i]
-        date_object = datetime.strptime(date_string, original_format)
-        new_date_string = date_object.strftime(new_format)
-        programlar["Bitiş"][i] = pd.to_datetime(
-            new_date_string,
-            format=new_format,
-        )
-    return programlar
+def get_open_programs(programs: pd.DataFrame, today: date):
+    open_programs = pd.DataFrame(columns=programs.columns)
+    for i in range(len(programs)):
+        if datetime.strptime(programs["Bitiş"][i], "%d-%m-%Y").date() >= today:
+            open_programs.loc[len(open_programs)] = programs.iloc[i]
+    open_programs.reset_index(drop=True, inplace=True)
+    return open_programs
 
 
 def main():
-    st.set_page_config(
-        page_title="💻Bilgisayar Topluluğu",
-        page_icon="💻",
-        layout="wide",
-        initial_sidebar_state="expanded",
-        menu_items={
-            "Get Help": "https://github.com/TOBB-ETU-CS-Community",
-            "Report a bug": "https://tobbetu-bilgisayar-toplulugu.streamlit.app/Geri Bildirim Formu",
-            "About": "Topluluğumuza ait web sayfasında bize dair pek çok bilgiye ulaşabilirsiniz. \
-            Her türlü geri bildiriminize her zaman açığız.",
-        },
+    set_page_config()
+
+    add_bg_from_local(
+        background_file="input/Community Logo.png",
+        sidebar_background_file="input/Lila Gradient.png",
     )
-    add_bg_from_local("input/Community Logo.png", "input/Lila Gradient.png")
 
     st.markdown(
         """<h1 style='text-align: center; color: black; font-size: 40px;'> Başvuruları açık olan,
@@ -48,7 +32,12 @@ def main():
         unsafe_allow_html=True,
     )
 
-    programs = load_program_excel()
+    programs = load_excel(
+        file="input/Programlar.xlsx",
+        date_column="Bitiş",
+        new_format="%d-%m-%Y",
+    )
+
     programs.sort_values(by="Bitiş", inplace=True)
     programs.reset_index(drop=True, inplace=True)
 
@@ -57,13 +46,9 @@ def main():
         ("Açık Programlar", "Tüm Programlar"),
     )
     if choice == "Açık Programlar":
-        programs_to_show = programs.loc[programs["Bitiş"] >= datetime.now()]
-        programs_to_show.reset_index(drop=True, inplace=True)
+        programs_to_show = get_open_programs(programs, today=date.today())
     else:
         programs_to_show = programs
-
-    # st.write(programs)
-    # st.write(programs_to_show)
 
     for i in range(len(programs_to_show)):
         _, center_col, _ = st.columns([1, 5, 1])
@@ -78,8 +63,7 @@ def main():
                 """,
             unsafe_allow_html=True,
         )
-        format_to_show = "%d-%m-%Y"
-        deadline = programs_to_show["Bitiş"][i].strftime(format_to_show)
+        deadline = programs_to_show["Bitiş"][i]
         center_col.markdown(
             f"""
                 <div style='text-align: center;  font-size: 30px;'>
