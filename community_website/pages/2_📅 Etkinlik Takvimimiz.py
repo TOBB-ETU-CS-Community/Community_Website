@@ -21,6 +21,7 @@ def main():
     calendar = load_excel(
         file="input/Etkinlik Takvimi.xlsx", date_column="Tarih"
     )
+    desired_date_format = "%Y-%m-%d"
 
     items = []
 
@@ -37,7 +38,7 @@ def main():
             "id": i,
             "content": calendar["İsim"][i],
             # "start": new_date_string
-            "start": calendar["Tarih"][i]
+            "start": calendar["Tarih"][i].strftime(desired_date_format)
             + " "
             + str(calendar["Başlangıç Saati"][i])
             + ":00",

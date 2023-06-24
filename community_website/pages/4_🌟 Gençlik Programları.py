@@ -30,13 +30,13 @@ def main():
         """,
         unsafe_allow_html=True,
     )
-    desired_date_format = "%d-%m-%Y"
 
     programs = load_excel(
         file="input/Programlar.xlsx",
         date_column="Bitiş",
         new_format=desired_date_format,
     )
+    desired_date_format = "%d-%m-%Y"
 
     choice = st.sidebar.radio(
         "Hangi programları görmek istersiniz?",
