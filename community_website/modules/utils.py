@@ -65,7 +65,7 @@ def local_css(file_name):
 @st.cache_data
 def load_excel(
     file: str,
-    date_column: str = None,
+    date_columns: list = None,
     original_format: str = "%d.%m.%Y",
     new_format: str = "%Y-%m-%d",
 ):
@@ -73,14 +73,15 @@ def load_excel(
         file,
         sheet_name="Sheet1",
     )
-    if date_column is not None:
-        for i in range(len(excel)):
-            date_string = excel[date_column][i]
-            date_object = datetime.strptime(date_string, original_format)
-            new_date_string = date_object.strftime(new_format)
-            excel[date_column][i] = datetime.strptime(
-                new_date_string, new_format
-            )
-        excel.sort_values(by=date_column, inplace=True)
-        excel.reset_index(drop=True, inplace=True)
+    if date_columns is not None:
+        for date_column in date_columns:
+            for i in range(len(excel)):
+                date_string = excel[date_column][i]
+                date_object = datetime.strptime(date_string, original_format)
+                new_date_string = date_object.strftime(new_format)
+                excel[date_column][i] = datetime.strptime(
+                    new_date_string, new_format
+                )
+            excel.sort_values(by=date_column, inplace=True)
+            excel.reset_index(drop=True, inplace=True)
     return excel

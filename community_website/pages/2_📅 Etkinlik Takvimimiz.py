@@ -18,10 +18,11 @@ def main():
         unsafe_allow_html=True,
     )
 
-    calendar = load_excel(
-        file="input/Etkinlik Takvimi.xlsx", date_column="Tarih"
-    )
     desired_date_format = "%Y-%m-%d"
+    date_columns = ["Tarih"]
+    calendar = load_excel(
+        file="input/Etkinlik Takvimi.xlsx", date_columns=date_columns
+    )
 
     items = []
 
