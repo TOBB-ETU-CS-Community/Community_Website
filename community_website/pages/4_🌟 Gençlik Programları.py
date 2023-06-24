@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date
 
 import pandas as pd
 import streamlit as st
@@ -10,9 +10,8 @@ from PIL import Image
 def get_open_programs(programs: pd.DataFrame, today: date):
     open_programs = pd.DataFrame(columns=programs.columns)
     for i in range(len(programs)):
-        if datetime.strptime(programs["Bitiş"][i], "%d-%m-%Y").date() >= today:
+        if (programs["Bitiş"][i]).date() >= today:
             open_programs.loc[len(open_programs)] = programs.iloc[i]
-    open_programs.reset_index(drop=True, inplace=True)
     return open_programs
 
 
@@ -31,15 +30,13 @@ def main():
         """,
         unsafe_allow_html=True,
     )
+    desired_date_format = "%d-%m-%Y"
 
     programs = load_excel(
         file="input/Programlar.xlsx",
         date_column="Bitiş",
-        new_format="%d-%m-%Y",
+        new_format=desired_date_format,
     )
-
-    programs.sort_values(by="Bitiş", inplace=True)
-    programs.reset_index(drop=True, inplace=True)
 
     choice = st.sidebar.radio(
         "Hangi programları görmek istersiniz?",
@@ -63,7 +60,7 @@ def main():
                 """,
             unsafe_allow_html=True,
         )
-        deadline = programs_to_show["Bitiş"][i]
+        deadline = programs_to_show["Bitiş"][i].strftime(desired_date_format)
         center_col.markdown(
             f"""
                 <div style='text-align: center;  font-size: 30px;'>

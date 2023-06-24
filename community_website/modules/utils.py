@@ -78,5 +78,9 @@ def load_excel(
             date_string = excel[date_column][i]
             date_object = datetime.strptime(date_string, original_format)
             new_date_string = date_object.strftime(new_format)
-            excel[date_column][i] = new_date_string
+            excel[date_column][i] = datetime.strptime(
+                new_date_string, new_format
+            )
+        excel.sort_values(by=date_column, inplace=True)
+        excel.reset_index(drop=True, inplace=True)
     return excel
