@@ -1,10 +1,12 @@
+import os
+
 import pandas as pd
 import streamlit as st
 from modules.utils import add_bg_from_local, set_page_config
 from streamlit.components.v1 import html
 
 
-def get_name_role(name: str, role: str, align: str = "left"):
+def get_name_role(name: str, role: str, align: str = "center"):
     return f"""<div style='text-align: {align};  font-size: 20px;'>
             {name}
             <br>
@@ -22,9 +24,11 @@ def get_linkedin_badge(name: str):
 def main():
     set_page_config()
 
+    background_img_file = os.path.join("input", "Community Logo.png")
+    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
     add_bg_from_local(
-        background_file="input/Community Logo.png",
-        sidebar_background_file="input/Lila Gradient.png",
+        background_img_file=background_img_file,
+        sidebar_background_img_file=sidebar_background_img_file,
     )
 
     team = pd.read_excel(
@@ -32,7 +36,7 @@ def main():
         sheet_name="Sheet1",
     )
 
-    cols = st.columns([1, 1, 1], gap="small")
+    cols = st.columns([1, 1, 1], gap="large")
 
     for i in range(3):
         cols[i].markdown(
@@ -41,8 +45,8 @@ def main():
             """,
             unsafe_allow_html=True,
         )
-
-        with cols[i]:
+        _, center_col, _ = cols[i].columns([1, 8, 8], gap="small")
+        with center_col:
             html(
                 f"""
                 {get_linkedin_badge(team.iloc[i, 3])}
@@ -51,61 +55,35 @@ def main():
                 width=350,
             )
 
-    st.markdown(
-        f"""
-           <hr>
-           <br>
-            """,
-        unsafe_allow_html=True,
-    )
-
-    cols = st.columns(4, gap="medium")
     clubs = [
         "Blockchain Kulübü",
         "Yapay Zeka Kulübü",
         "Oyun Geliştirme Kulübü",
         "Uygulama Geliştirme Kulübü",
+        "Siber Güvenlik Kulübü",
     ]
 
-    for c in range(4):
+    for c in range(len(clubs)):
         club_team = team.query(f"Grup=='{clubs[c]}'")
 
-        for i in range(len(club_team)):
-            cols[c].markdown(
-                f"""
-                {get_name_role(club_team.iloc[i, 0] , club_team.iloc[i, 1], "center")}
-                """,
-                unsafe_allow_html=True,
-            )
-
-            with cols[c]:
-                html(
+        with st.expander(clubs[c], expanded=False):
+            cols = st.columns(3, gap="large")
+            for i in range(len(club_team)):
+                cols[i % 3].markdown(
                     f"""
-                    {get_linkedin_badge(club_team.iloc[i, 3])}
+                    {get_name_role(club_team.iloc[i, 0] , club_team.iloc[i, 2])}
                     """,
-                    height=300,
-                    width=350,
+                    unsafe_allow_html=True,
                 )
-
-    _, col2, _ = st.columns(3)
-
-    siber_ekibi = team.query("Grup=='Siber Güvenlik Kulübü'")
-    for i in range(len(siber_ekibi)):
-        col2.markdown(
-            f"""
-            {get_name_role(siber_ekibi.iloc[i, 0] , siber_ekibi.iloc[i, 1], "center")}
-            """,
-            unsafe_allow_html=True,
-        )
-
-        with col2:
-            html(
-                f"""
-                {get_linkedin_badge(siber_ekibi.iloc[i, 3])}
-                """,
-                height=300,
-                width=350,
-            )
+                _, center_col, _ = cols[i % 3].columns([1, 8, 8], gap="small")
+                with center_col:
+                    html(
+                        f"""
+                        {get_linkedin_badge(club_team.iloc[i, 3])}
+                        """,
+                        height=300,
+                        width=350,
+                    )
 
 
 if __name__ == "__main__":

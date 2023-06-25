@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 from modules.utils import add_bg_from_local, local_css, set_page_config
 
@@ -5,9 +7,11 @@ from modules.utils import add_bg_from_local, local_css, set_page_config
 def main():
     set_page_config()
 
+    background_img_file = os.path.join("input", "Community Logo.png")
+    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
     add_bg_from_local(
-        background_file="input/Community Logo.png",
-        sidebar_background_file="input/Lila Gradient.png",
+        background_img_file=background_img_file,
+        sidebar_background_img_file=sidebar_background_img_file,
     )
     local_css("style/style.css")
 

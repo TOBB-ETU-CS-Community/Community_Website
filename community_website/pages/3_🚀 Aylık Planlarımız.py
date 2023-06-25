@@ -1,3 +1,5 @@
+import os
+
 import plotly.express as px
 import streamlit as st
 from modules.utils import add_bg_from_local, load_excel, set_page_config
@@ -44,9 +46,11 @@ def draw_gantt_chart(plan):
 def main():
     set_page_config()
 
+    background_img_file = os.path.join("input", "Community Logo.png")
+    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
     add_bg_from_local(
-        background_file="input/Community Logo.png",
-        sidebar_background_file="input/Lila Gradient.png",
+        background_img_file=background_img_file,
+        sidebar_background_img_file=sidebar_background_img_file,
     )
 
     st.markdown(

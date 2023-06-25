@@ -1,3 +1,4 @@
+import os
 from datetime import date
 
 import pandas as pd
@@ -18,9 +19,11 @@ def get_open_programs(programs: pd.DataFrame, today: date):
 def main():
     set_page_config()
 
+    background_img_file = os.path.join("input", "Community Logo.png")
+    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
     add_bg_from_local(
-        background_file="input/Community Logo.png",
-        sidebar_background_file="input/Lila Gradient.png",
+        background_img_file=background_img_file,
+        sidebar_background_img_file=sidebar_background_img_file,
     )
 
     st.markdown(
