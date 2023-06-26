@@ -44,7 +44,10 @@ def main():
 
     choice = st.sidebar.radio(
         "Hangi programları görmek istersiniz?",
-        ("Açık Programlar", "Tüm Programlar"),
+        (
+            "Tüm Programlar",
+            "Açık Programlar",
+        ),
     )
     if choice == "Açık Programlar":
         programs_to_show = get_open_programs(programs, today=date.today())

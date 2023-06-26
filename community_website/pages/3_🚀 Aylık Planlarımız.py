@@ -19,7 +19,8 @@ def draw_gantt_chart(plan):
     fig.update_layout(
         hoverlabel_bgcolor="#DAEEED",  # Change the hover tooltip background color to a universal light blue color. If not specified, the background color will vary by team or completion pct, depending on what view the user chooses
         bargap=0.2,
-        height=700,
+        # barmode="group",
+        height=len(plan) * 100,
         xaxis_title="",
         yaxis_title="",
         xaxis=dict(
