@@ -31,14 +31,6 @@ def main():
     items = []
 
     for i in range(len(calendar)):
-        clubs = {
-            "Bilgisayar Topluluğu": 1,
-            "Blockchain Kulübü": 2,
-            "Yapay Zeka Kulübü": 3,
-            "Oyun Geliştirme Kulübü": 4,
-            "Uygulama Geliştirme Kulübü": 5,
-        }
-        reversed_clubs = {v: k for k, v in clubs.items()}
         item = {
             "id": i,
             "content": calendar["İsim"][i],
@@ -51,7 +43,7 @@ def main():
         }
         items.append(item)
 
-    timeline = st_timeline(items, groups=[], options={}, height="500px")
+    timeline = st_timeline(items, groups=[], options={}, height="600px")
 
 
 if __name__ == "__main__":

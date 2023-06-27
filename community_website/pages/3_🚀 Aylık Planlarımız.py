@@ -5,6 +5,7 @@ import streamlit as st
 from modules.utils import add_bg_from_local, load_excel, set_page_config
 
 
+@st.cache_data
 def draw_gantt_chart(plan):
     fig = px.timeline(
         plan,
