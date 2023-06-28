@@ -20,11 +20,10 @@ def main():
         unsafe_allow_html=True,
     )
 
-    feedback_message = '<p style="font-family:Arial; font-size: 30px;" align="center"> \
-    Aşağıdaki metin alanını doldurarak topluluk hakkındaki görüşlerinizi bize iletebilirsiniz. Teşekkürler!</p>'
+    feedback_message = """<p style="font-family:Arial; font-size: 30px;" align="center">
+    Aşağıdaki metin alanını doldurarak topluluk hakkındaki görüşlerinizi bize iletebilirsiniz. Teşekkürler!</p>
+    <br>"""
     st.markdown(feedback_message, unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)
-
     contact_form = """
     <form action="https://formsubmit.co/kuantum21fizik@gmail.com" method="POST" align="center">
         <input type="hidden" name="_captcha" value="false">

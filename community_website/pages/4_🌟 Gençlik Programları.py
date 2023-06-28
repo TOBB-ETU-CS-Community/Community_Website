@@ -67,7 +67,8 @@ def main():
                 """,
             unsafe_allow_html=True,
         )
-        deadline = programs_to_show["Bitiş"][i].strftime(desired_date_format)
+        deadline_date_format = "%d-%m-%Y"
+        deadline = programs_to_show["Bitiş"][i].strftime(deadline_date_format)
         center_col.markdown(
             f"""
                 <div style='text-align: center;  font-size: 30px;'>
