@@ -13,7 +13,8 @@ def main():
         background_img_file=background_img_file,
         sidebar_background_img_file=sidebar_background_img_file,
     )
-    local_css("style/style.css")
+    css_file = os.path.join("style", "style.css")
+    local_css(css_file)
 
     st.markdown(
         "<h1 style='text-align: center; color: black; font-size: 60px;'> 📧 Geri Bildirim Formu </h1> <br>",

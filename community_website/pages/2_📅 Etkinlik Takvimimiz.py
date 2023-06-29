@@ -22,11 +22,10 @@ def main():
         unsafe_allow_html=True,
     )
 
+    file_path = os.path.join("input", "Etkinlik Takvimi.xlsx")
     desired_date_format = "%Y-%m-%d"
     date_columns = ["Tarih"]
-    calendar = load_excel(
-        file="input/Etkinlik Takvimi.xlsx", date_columns=date_columns
-    )
+    calendar = load_excel(file_path=file_path, date_columns=date_columns)
 
     items = []
 

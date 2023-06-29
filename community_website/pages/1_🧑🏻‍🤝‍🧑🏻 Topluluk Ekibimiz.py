@@ -1,8 +1,7 @@
 import os
 
-import pandas as pd
 import streamlit as st
-from modules.utils import add_bg_from_local, set_page_config
+from modules.utils import add_bg_from_local, load_excel, set_page_config
 from streamlit.components.v1 import html
 
 
@@ -31,9 +30,9 @@ def main():
         sidebar_background_img_file=sidebar_background_img_file,
     )
 
-    team = pd.read_excel(
-        "input/Topluluk Ekibi.xlsx",
-        sheet_name="Sheet1",
+    file_path = os.path.join("input", "Topluluk Ekibi.xlsx")
+    team = load_excel(
+        file_path=file_path,
     )
 
     cols = st.columns([1, 1, 1], gap="large")

@@ -34,10 +34,11 @@ def main():
         unsafe_allow_html=True,
     )
 
+    file_path = os.path.join("input", "Programlar.xlsx")
     desired_date_format = "%d-%m-%Y"
     date_columns = ["Bitiş"]
     programs = load_excel(
-        file="input/Programlar.xlsx",
+        file_path=file_path,
         date_columns=date_columns,
         new_format=desired_date_format,
     )
@@ -79,9 +80,10 @@ def main():
                 """,
             unsafe_allow_html=True,
         )
-        image = Image.open(
-            f"input/program_images/{programs_to_show['İsim'][i]}.jpg"
+        image_path = os.path.join(
+            "input", "program_images", f"{programs_to_show['İsim'][i]}.jpg"
         )
+        image = Image.open(image_path)
         center_col.image(image)
         center_col.markdown(
             f"""

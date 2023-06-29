@@ -64,13 +64,13 @@ def local_css(file_name):
 
 @st.cache_data
 def load_excel(
-    file: str,
+    file_path: str,
     date_columns: list = None,
     original_format: str = "%d.%m.%Y",
     new_format: str = "%Y-%m-%d",
 ):
     excel = pd.read_excel(
-        file,
+        io=file_path,
         sheet_name="Sheet1",
     )
     if date_columns is not None:

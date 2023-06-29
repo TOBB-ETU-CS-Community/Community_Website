@@ -62,10 +62,11 @@ def main():
         unsafe_allow_html=True,
     )
 
+    file_path = os.path.join("input", "Aylık Plan.xlsx")
     desired_date_format = "%d-%m-%Y"
     date_columns = ["Başlangıç", "Bitiş"]
     plan = load_excel(
-        file="input/Aylık Plan.xlsx",
+        file_path=file_path,
         date_columns=date_columns,
         new_format=desired_date_format,
     )
