@@ -15,10 +15,13 @@ def draw_gantt_chart(plan):
         color="Sorumlular",
         hover_name="Detay",
     )
-    fig.update_layout(plot_bgcolor="white")
+    fig.update_layout(
+        plot_bgcolor="white",
+        paper_bgcolor="rgba(256, 256, 256, 0.3)",
+    )
 
     fig.update_layout(
-        hoverlabel_bgcolor="#DAEEED",  # Change the hover tooltip background color to a universal light blue color. If not specified, the background color will vary by team or completion pct, depending on what view the user chooses
+        hoverlabel_bgcolor="#DAEEED",
         bargap=0.2,
         # barmode="group",
         height=len(plan) * 100,
@@ -28,12 +31,12 @@ def draw_gantt_chart(plan):
             tickfont_size=20,
             tickangle=0,
             rangeslider_visible=True,
-            side="top",  # Place the tick labels on the top of the chart
+            side="top",
             showgrid=True,
             zeroline=True,
             showline=True,
             showticklabels=True,
-            tickformat="%d %b\n",  # Display the tick labels in certain format. To learn more about different formats, visit: https://github.com/d3/d3-format/blob/main/README.md#locale_format
+            tickformat="%d %b\n",
         ),
     )
     fig.update_yaxes(
@@ -48,11 +51,15 @@ def draw_gantt_chart(plan):
 def main():
     set_page_config()
 
-    background_img_file = os.path.join("input", "Community Logo.png")
-    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
+    background_img_path = os.path.join(
+        "static", "background", "Community Logo.png"
+    )
+    sidebar_background_img_path = os.path.join(
+        "static", "background", "Lila Gradient.png"
+    )
     add_bg_from_local(
-        background_img_file=background_img_file,
-        sidebar_background_img_file=sidebar_background_img_file,
+        background_img_path=background_img_path,
+        sidebar_background_img_path=sidebar_background_img_path,
     )
 
     st.markdown(
@@ -62,7 +69,7 @@ def main():
         unsafe_allow_html=True,
     )
 
-    file_path = os.path.join("input", "Aylık Plan.xlsx")
+    file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
     desired_date_format = "%d-%m-%Y"
     date_columns = ["Başlangıç", "Bitiş"]
     plan = load_excel(

@@ -8,11 +8,15 @@ from streamlit_timeline import st_timeline
 def main():
     set_page_config()
 
-    background_img_file = os.path.join("input", "Community Logo.png")
-    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
+    background_img_path = os.path.join(
+        "static", "background", "Community Logo.png"
+    )
+    sidebar_background_img_path = os.path.join(
+        "static", "background", "Lila Gradient.png"
+    )
     add_bg_from_local(
-        background_img_file=background_img_file,
-        sidebar_background_img_file=sidebar_background_img_file,
+        background_img_path=background_img_path,
+        sidebar_background_img_path=sidebar_background_img_path,
     )
 
     st.markdown(
@@ -22,7 +26,7 @@ def main():
         unsafe_allow_html=True,
     )
 
-    file_path = os.path.join("input", "Etkinlik Takvimi.xlsx")
+    file_path = os.path.join("static", "xlsx", "Etkinlik Takvimi.xlsx")
     desired_date_format = "%Y-%m-%d"
     date_columns = ["Tarih"]
     calendar = load_excel(file_path=file_path, date_columns=date_columns)

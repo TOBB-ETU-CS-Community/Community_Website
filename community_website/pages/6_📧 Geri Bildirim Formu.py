@@ -7,11 +7,15 @@ from modules.utils import add_bg_from_local, local_css, set_page_config
 def main():
     set_page_config()
 
-    background_img_file = os.path.join("input", "Community Logo.png")
-    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
+    background_img_path = os.path.join(
+        "static", "background", "Community Logo.png"
+    )
+    sidebar_background_img_path = os.path.join(
+        "static", "background", "Lila Gradient.png"
+    )
     add_bg_from_local(
-        background_img_file=background_img_file,
-        sidebar_background_img_file=sidebar_background_img_file,
+        background_img_path=background_img_path,
+        sidebar_background_img_path=sidebar_background_img_path,
     )
     css_file = os.path.join("style", "style.css")
     local_css(css_file)

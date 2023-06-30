@@ -5,10 +5,10 @@ import pandas as pd
 import streamlit as st
 
 
-def add_bg_from_local(background_img_file, sidebar_background_img_file):
-    with open(background_img_file, "rb") as image_file:
+def add_bg_from_local(background_img_path, sidebar_background_img_path):
+    with open(background_img_path, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
-    with open(sidebar_background_img_file, "rb") as image_file:
+    with open(sidebar_background_img_path, "rb") as image_file:
         sidebar_encoded_string = base64.b64encode(image_file.read())
 
     page = f"""<style>

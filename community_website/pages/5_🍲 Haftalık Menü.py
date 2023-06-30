@@ -8,11 +8,15 @@ from PIL import Image
 def main():
     set_page_config()
 
-    background_img_file = os.path.join("input", "Community Logo.png")
-    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
+    background_img_path = os.path.join(
+        "static", "background", "Community Logo.png"
+    )
+    sidebar_background_img_path = os.path.join(
+        "static", "background", "Lila Gradient.png"
+    )
     add_bg_from_local(
-        background_img_file=background_img_file,
-        sidebar_background_img_file=sidebar_background_img_file,
+        background_img_path=background_img_path,
+        sidebar_background_img_path=sidebar_background_img_path,
     )
 
     st.markdown(
@@ -24,7 +28,7 @@ def main():
     ETU Mutfağın 2 haftalık menüsünü sürekli güncelliyoruz. Afiyet olsun 😋</p>'
     st.markdown(main_message, unsafe_allow_html=True)
 
-    image_path = os.path.join("input", "Haftalık Menü.png")
+    image_path = os.path.join("static", "Haftalık Menü.png")
     image = Image.open(image_path)
     st.image(image)
 

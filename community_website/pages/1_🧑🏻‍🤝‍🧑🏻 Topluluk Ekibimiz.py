@@ -23,14 +23,18 @@ def get_linkedin_badge(name: str):
 def main():
     set_page_config()
 
-    background_img_file = os.path.join("input", "Community Logo.png")
-    sidebar_background_img_file = os.path.join("input", "Lila Gradient.png")
+    background_img_path = os.path.join(
+        "static", "background", "Community Logo.png"
+    )
+    sidebar_background_img_path = os.path.join(
+        "static", "background", "Lila Gradient.png"
+    )
     add_bg_from_local(
-        background_img_file=background_img_file,
-        sidebar_background_img_file=sidebar_background_img_file,
+        background_img_path=background_img_path,
+        sidebar_background_img_path=sidebar_background_img_path,
     )
 
-    file_path = os.path.join("input", "Topluluk Ekibi.xlsx")
+    file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
     team = load_excel(
         file_path=file_path,
     )
