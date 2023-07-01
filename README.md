@@ -46,7 +46,7 @@ git clone https://github.com/TOBB-ETU-CS-Community/Community_Website.git
 2. Navigate to the project directory:
 
 ```
-cd CCommunity_Website
+cd Community_Website
 ```
 
 3. Install project dependencies using Poetry:
@@ -68,7 +68,7 @@ poetry shell
 2. Run the project:
 
 ```
-streamlit run "community_website\💻 Hoşgeldiniz.py"
+streamlit run "community_website\👋 Hoşgeldiniz.py"
 ```
 
 or click start.bat file
