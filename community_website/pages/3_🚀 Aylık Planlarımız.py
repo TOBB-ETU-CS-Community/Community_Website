@@ -57,10 +57,11 @@ def main():
     sidebar_background_img_path = os.path.join(
         "static", "background", "Lila Gradient.png"
     )
-    add_bg_from_local(
+    page_markdown = add_bg_from_local(
         background_img_path=background_img_path,
         sidebar_background_img_path=sidebar_background_img_path,
     )
+    st.markdown(page_markdown, unsafe_allow_html=True)
 
     st.markdown(
         "<h1 style='text-align: center; color: black; font-size: 40px;'> Aylık planlarımızı aşağıdaki \
@@ -72,11 +73,14 @@ def main():
     file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
     desired_date_format = "%d-%m-%Y"
     date_columns = ["Başlangıç", "Bitiş"]
-    plan = load_excel(
-        file_path=file_path,
-        date_columns=date_columns,
-        new_format=desired_date_format,
-    )
+    _, center_col, _ = st.columns(3)
+    with center_col:
+        with st.spinner("Veri yükleniyor"):
+            plan = load_excel(
+                file_path=file_path,
+                date_columns=date_columns,
+                new_format=desired_date_format,
+            )
 
     chart = draw_gantt_chart(plan)
     st.plotly_chart(chart, use_container_width=True, theme="streamlit")

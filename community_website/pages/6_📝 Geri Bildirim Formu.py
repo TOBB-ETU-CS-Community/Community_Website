@@ -13,15 +13,16 @@ def main():
     sidebar_background_img_path = os.path.join(
         "static", "background", "Lila Gradient.png"
     )
-    add_bg_from_local(
+    page_markdown = add_bg_from_local(
         background_img_path=background_img_path,
         sidebar_background_img_path=sidebar_background_img_path,
     )
+    st.markdown(page_markdown, unsafe_allow_html=True)
     css_file = os.path.join("style", "style.css")
     local_css(css_file)
 
     st.markdown(
-        "<h1 style='text-align: center; color: black; font-size: 60px;'> 📧 Geri Bildirim Formu </h1> <br>",
+        "<h1 style='text-align: center; color: black; font-size: 60px;'> 📝 Geri Bildirim Formu </h1> <br>",
         unsafe_allow_html=True,
     )
 

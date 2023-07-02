@@ -29,15 +29,19 @@ def main():
     sidebar_background_img_path = os.path.join(
         "static", "background", "Lila Gradient.png"
     )
-    add_bg_from_local(
+    page_markdown = add_bg_from_local(
         background_img_path=background_img_path,
         sidebar_background_img_path=sidebar_background_img_path,
     )
+    st.markdown(page_markdown, unsafe_allow_html=True)
 
     file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
-    team = load_excel(
-        file_path=file_path,
-    )
+    _, center_col, _ = st.columns(3)
+    with center_col:
+        with st.spinner("Veri yükleniyor"):
+            team = load_excel(
+                file_path=file_path,
+            )
 
     cols = st.columns([1, 1, 1], gap="large")
 

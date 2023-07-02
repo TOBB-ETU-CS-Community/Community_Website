@@ -14,13 +14,14 @@ def main():
     sidebar_background_img_path = os.path.join(
         "static", "background", "Lila Gradient.png"
     )
-    add_bg_from_local(
+    page_markdown = add_bg_from_local(
         background_img_path=background_img_path,
         sidebar_background_img_path=sidebar_background_img_path,
     )
+    st.markdown(page_markdown, unsafe_allow_html=True)
 
     st.markdown(
-        "<h1 style='text-align: center; color: black; font-size: 60px;'> 🍲 Haftalık Menü </h1>",
+        "<h1 style='text-align: center; color: black; font-size: 60px;'> 🍽️ Haftalık Menü </h1>",
         unsafe_allow_html=True,
     )
 

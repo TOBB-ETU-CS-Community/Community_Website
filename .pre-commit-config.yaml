@@ -60,9 +60,3 @@ repos:
       - id: debug-statements
       - id: mixed-line-ending
       - id: detect-private-key
-
-  - repo: https://github.com/sourcery-ai/sourcery
-    rev: v1.5.0
-    hooks:
-      - id: sourcery
-        args: [--diff=git diff HEAD, --fix, --summary]
