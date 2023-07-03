@@ -12,7 +12,7 @@ def draw_gantt_chart(plan):
         x_start="Başlangıç",
         x_end="Bitiş",
         y="Görev",
-        color="Sorumlular",
+        color="Kulüpler",
         hover_name="Detay",
     )
     fig.update_layout(
