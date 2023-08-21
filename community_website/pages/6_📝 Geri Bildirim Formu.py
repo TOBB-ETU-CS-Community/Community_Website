@@ -18,6 +18,7 @@ def main():
         sidebar_background_img_path=sidebar_background_img_path,
     )
     st.markdown(page_markdown, unsafe_allow_html=True)
+
     css_file = os.path.join("style", "style.css")
     local_css(css_file)
 
