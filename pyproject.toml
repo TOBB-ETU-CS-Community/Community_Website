@@ -12,7 +12,7 @@ streamlit = "^1.23.1"
 pandas = "^2.0.2"
 openpyxl = "^3.1.2"
 calendar-view = "^2.2.0"
-streamlit-vis-timeline = "^0.3.0"
+streamlit-vis-timeline = "0.2.0"
 plotly = "^5.15.0"
 
 

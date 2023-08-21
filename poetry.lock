@@ -1223,14 +1223,14 @@ snowflake = ["snowflake-snowpark-python"]
 
 [[package]]
 name = "streamlit-vis-timeline"
-version = "0.3.0"
+version = "0.2.0"
 description = "Streamlit component for rendering vis.js timeline"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "streamlit-vis-timeline-0.3.0.tar.gz", hash = "sha256:76d788eaf31512560e5a521944009f3bdd996eca4f2e941019f260e81be92f12"},
-    {file = "streamlit_vis_timeline-0.3.0-py3-none-any.whl", hash = "sha256:c1f1e3b2cc936e169de3cef26e95da46d2ff7e2d66e6cfb997a1942b58e28f7e"},
+    {file = "streamlit-vis-timeline-0.2.0.tar.gz", hash = "sha256:f865eee1edbd246d77fa943703c5bdc4e6d148b99f7e9699a779aea491f8aba5"},
+    {file = "streamlit_vis_timeline-0.2.0-py3-none-any.whl", hash = "sha256:3da0e780530d49400ea68fc0ecd9170a1ac21e0a2197f3c2a5ad9733185d64ab"},
 ]
 
 [package.dependencies]
@@ -1459,4 +1459,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "dd62bcdf0171cdf6fb21cac1a14943d76424a8d1a479b24b806a828b428eaef0"
+content-hash = "649766f9aed271cb1329befab133f911ac1ba3e0185c2898ffb357643bbb7222"
