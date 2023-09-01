@@ -15,7 +15,7 @@
 
 It is the website of our CS Community
 
-[WebApp link] (https://tobbetu-bilgisayar-toplulugu.streamlit.app/)
+[WebApp link](https://tobbetu-bilgisayar-toplulugu.streamlit.app/)
 
 ## Table of Contents
 
