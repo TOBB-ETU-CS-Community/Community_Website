@@ -41,7 +41,7 @@ def main():
     json_object = {
         "title": {
             "text": {
-                "headline": "TOBB ETU Bilgisayar Topluluğu Etkinlik Takvimi",
+                "headline": "Etkinlik Takvimi",
                 "text": "<p>2022 Nisan ayındaki kuruluşumuzdan bu yana gerçekleştirdiğimiz ya da katıldığımız \
                  her etkinliğe bu zaman çizelgesi üzerinden ulaşabilirsiniz.</p>",
             },
