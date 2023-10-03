@@ -20,22 +20,21 @@ def main():
     st.markdown(page_markdown, unsafe_allow_html=True)
 
     st.markdown(
-        """<h1 style='text-align: center; color: black; font-size: 60px;'> TOBB ETU Bilgisayar Topluluğu
-         Web Sayfasına Hoşgeldiniz 👋</h1> \
+        """<h1 style='text-align: center; color: black; font-size: 60px;'> Welcome to the TOBB ETU Computer Science Community
+     Website 👋/h1> \
         <br>""",
         unsafe_allow_html=True,
     )
 
     st.markdown(
         """<p style='text-align: center;  font-size: 20px;'>
-        TOBB ETU Bilgisayar Topluluğu, 2022 yılının Nisan ayında kurulmuş bir öğrenci topluluğudur. Bu topluluğun
-        temel amacı, öğrencilerin kendilerini sosyal ve teknik becerilerde en iyi şekilde geliştirebilmesi için
-        fırsatlar yaratmaktır. Bu amaçla online ya da yüz yüze etkinlikler düzenliyor, ulusal ve uluslararası
-        yarışmalara katılıyor ve açık kaynak kodlu projeler geliştiriyoruz. Türkiye'nin her yerinden ve her eğitim
-        seviyesinden insanla birlikte topluluğumuz için birlikte çalışmaya hazırız.
+        TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community
+        is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we
+        organize online and face-to-face events, participate in national and international competitions, and develop
+        open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of
+        education for our community.
         <br> <br>
-        <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a> adresimizden farklı platformlardaki
-        hesaplarımıza ulaşabilirsiniz.
+        You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>
         </p> """,
         unsafe_allow_html=True,
     )
