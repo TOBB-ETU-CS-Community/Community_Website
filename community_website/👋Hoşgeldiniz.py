@@ -21,7 +21,7 @@ def main():
 
     st.markdown(
         """<h1 style='text-align: center; color: black; font-size: 60px;'> Welcome to the TOBB ETU Computer Science Community
-     Website 👋/h1> \
+     Website 👋 </h1> \
         <br>""",
         unsafe_allow_html=True,
     )

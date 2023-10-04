@@ -22,9 +22,9 @@ def main():
     st.markdown(page_markdown, unsafe_allow_html=True)
 
     st.markdown(
-        "<h1 style='text-align: center; color: black; font-size: 40px;'> Etkinlik takvimimizi aşağıdaki \
-            zaman çizelgesi üzerinden inceleyebilirsiniz </h1> \
-        ",
+        """<h1 style='text-align: center; color: black; font-size: 40px;'> You can review
+        our event calendar on the timeline below. </h1>
+        """,
         unsafe_allow_html=True,
     )
 
@@ -33,7 +33,7 @@ def main():
     date_columns = ["Tarih"]
     _, center_col, _ = st.columns(3)
     with center_col:
-        with st.spinner("Veri yükleniyor"):
+        with st.spinner("Data is loading"):
             calendar = load_excel(
                 file_path=file_path, date_columns=date_columns
             )
@@ -41,9 +41,9 @@ def main():
     json_object = {
         "title": {
             "text": {
-                "headline": "Etkinlik Takvimi",
-                "text": "<p>2022 Nisan ayındaki kuruluşumuzdan bu yana gerçekleştirdiğimiz ya da katıldığımız \
-                 her etkinliğe bu zaman çizelgesi üzerinden ulaşabilirsiniz.</p>",
+                "headline": "Event Calendar",
+                "text": """<p>You can access every event we have held or attended since
+                our establishment in April 2022 through this timeline.</p>""",
             },
         },
         "events": [],
