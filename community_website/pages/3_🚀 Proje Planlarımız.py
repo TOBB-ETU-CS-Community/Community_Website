@@ -64,9 +64,9 @@ def main():
     st.markdown(page_markdown, unsafe_allow_html=True)
 
     st.markdown(
-        "<h1 style='text-align: center; color: black; font-size: 40px;'> Proje planlarımızı aşağıdaki \
-            gantt chart üzerinden inceleyebilirsiniz </h1> \
-        ",
+        """<h1 style='text-align: center; color: black; font-size: 40px;'> You can review
+        our project plans via the gantt chart below. </h1>
+        """,
         unsafe_allow_html=True,
     )
 
