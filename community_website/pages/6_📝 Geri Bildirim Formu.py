@@ -23,22 +23,22 @@ def main():
     local_css(css_file)
 
     st.markdown(
-        "<h1 style='text-align: center; color: black; font-size: 60px;'> 📝 Geri Bildirim Formu </h1> <br>",
+        "<h1 style='text-align: center; color: black; font-size: 60px;'> 📝 Feedback Form </h1> <br>",
         unsafe_allow_html=True,
     )
 
     feedback_message = """<p style="font-family:Arial; font-size: 30px;" align="center">
-    Aşağıdaki metin alanını doldurarak topluluk hakkındaki görüşlerinizi bize iletebilirsiniz. Teşekkürler!</p>
+    You can tell us your opinions about the community by filling in the text field below. Thanks!</p>
     <br>"""
     st.markdown(feedback_message, unsafe_allow_html=True)
     contact_form = """
     <form action="https://formsubmit.co/kuantum21fizik@gmail.com" method="POST" align="center">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="CS Community Feedback!">
-        <input type="text" name="name" placeholder="İsminiz" required>
-        <input type="email" name="email" placeholder="Mailiniz" required>
-        <textarea name="message" placeholder="Mesajınızı buraya yazın."></textarea>
-        <button type="submit">Gönder</button>
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your feedback"></textarea>
+        <button type="submit">Submit</button>
         <input type="hidden" name="_next" value="https://tobbetu-bilgisayar-toplulugu.streamlit.app">
     </form>
     """

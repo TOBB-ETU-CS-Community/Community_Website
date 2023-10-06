@@ -21,12 +21,12 @@ def main():
     st.markdown(page_markdown, unsafe_allow_html=True)
 
     st.markdown(
-        "<h1 style='text-align: center; color: black; font-size: 60px;'> 🍽️ Haftalık Menü </h1>",
+        "<h1 style='text-align: center; color: black; font-size: 60px;'> 🍽️ Weekly Menu </h1>",
         unsafe_allow_html=True,
     )
 
     main_message = '<p style="font-family:Arial; font-size: 30px;" align="center"> \
-    ETU Mutfağın 2 haftalık menüsünü sürekli güncelliyoruz. Afiyet olsun 😋</p>'
+    We are constantly updating the 2-week menu of ETU Kitchen. Bon Appétit 😋</p>'
     st.markdown(main_message, unsafe_allow_html=True)
 
     image_path = os.path.join("static", "Haftalık Menü.png")

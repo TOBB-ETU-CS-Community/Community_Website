@@ -32,8 +32,8 @@ def main():
     st.markdown(page_markdown, unsafe_allow_html=True)
 
     st.markdown(
-        """<h1 style='text-align: center; color: black; font-size: 40px;'> Üniversite öğrencilerine
-         yönelik gençlik programlarını aşağıda bulabilirsiniz. </h1>
+        """<h1 style='text-align: center; color: black; font-size: 40px;'> You can find
+        youth programs for university students below. </h1>
         <br>
         """,
         unsafe_allow_html=True,
@@ -52,13 +52,13 @@ def main():
             )
 
     choice = st.sidebar.radio(
-        "Hangi programları görmek istersiniz?",
+        "Which programs would you like to see?",
         (
-            "Tüm Programlar",
-            "Açık Programlar",
+            "All programs",
+            "Open programs",
         ),
     )
-    if choice == "Açık Programlar":
+    if choice == "Open programs":
         programs_to_show = get_open_programs(programs, today=date.today())
     else:
         programs_to_show = programs
@@ -81,7 +81,7 @@ def main():
         center_col.markdown(
             f"""
                 <div style='text-align: center;  font-size: 30px;'>
-                Son Başvuru Tarihi: {deadline}
+                Deadline: {deadline}
                 <br>
                 <br>
                 </div>
