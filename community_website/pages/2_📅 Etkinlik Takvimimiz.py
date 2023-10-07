@@ -38,6 +38,13 @@ def main():
                 file_path=file_path, date_columns=date_columns
             )
 
+    # db_file = "activity_calendar.db"
+    # conn = sqlite3.connect(db_file)
+    # query = "SELECT * FROM activity;"
+    # query = conn.execute(query)
+    # cols = [column[0] for column in query.description]
+    # calendar = pd.DataFrame.from_records(data=query.fetchall(), columns=cols)
+
     json_object = {
         "title": {
             "text": {
