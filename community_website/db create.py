@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 from modules.utils import load_excel
 from sqlalchemy import create_engine
-from sqlalchemy.types import NVARCHAR, Date, Time, sqlalchemy
+from sqlalchemy.types import NVARCHAR, Date, Time
 
 
 def sqlcol(dfparam):
@@ -80,8 +80,12 @@ def upload_data():
                 file_path=file_path, date_columns=date_columns
             )
 
-    calendar = calendar.astype("str")
+    calendar["Tarih"] = pd.to_datetime(calendar["Tarih"])
+    # calendar["Başlangıç Saati"] = calendar["Başlangıç Saati"].apply(pd.Timestamp)
+    # calendar["Bitiş Saati"] = pd.to_datetime(calendar["Bitiş Saati"])
     st.write(calendar.dtypes)
+    calendar.describe()
+    calendar
     df_schema = {
         "İsim": NVARCHAR(80),
         "Tarih": Date(),

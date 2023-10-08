@@ -1,8 +1,10 @@
 import json
 import os
+import sqlite3
 
+import pandas as pd
 import streamlit as st
-from modules.utils import add_bg_from_local, load_excel, set_page_config
+from modules.utils import add_bg_from_local, set_page_config
 from streamlit_timeline import timeline
 
 
@@ -28,8 +30,8 @@ def main():
         unsafe_allow_html=True,
     )
 
-    file_path = os.path.join("static", "xlsx", "Etkinlik Takvimi.xlsx")
-
+    os.path.join("static", "xlsx", "Etkinlik Takvimi.xlsx")
+    """
     date_columns = ["Tarih"]
     _, center_col, _ = st.columns(3)
     with center_col:
@@ -37,13 +39,21 @@ def main():
             calendar = load_excel(
                 file_path=file_path, date_columns=date_columns
             )
+    """
 
-    # db_file = "activity_calendar.db"
-    # conn = sqlite3.connect(db_file)
-    # query = "SELECT * FROM activity;"
-    # query = conn.execute(query)
-    # cols = [column[0] for column in query.description]
-    # calendar = pd.DataFrame.from_records(data=query.fetchall(), columns=cols)
+    db_file = "cs_com_db.db"
+    conn = sqlite3.connect(db_file)
+    query = "SELECT * FROM activity;"
+    query = conn.execute(query)
+    cols = [column[0] for column in query.description]
+    calendar = pd.DataFrame.from_records(data=query.fetchall(), columns=cols)
+    st.write(calendar.dtypes)
+    st.write(calendar)
+    calendar["Tarih"] = pd.to_datetime(calendar["Tarih"])
+    calendar["Başlangıç Saati"] = pd.to_datetime(
+        calendar["Başlangıç Saati"].str[:5], format="%H:%M"
+    )
+    st.write(calendar.dtypes)
 
     json_object = {
         "title": {
