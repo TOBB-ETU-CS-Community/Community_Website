@@ -53,6 +53,9 @@ def main():
     calendar["Başlangıç Saati"] = pd.to_datetime(
         calendar["Başlangıç Saati"].str[:5], format="%H:%M"
     )
+    calendar["Bitiş Saati"] = pd.to_datetime(
+        calendar["Bitiş Saati"].str[:5], format="%H:%M"
+    )
     st.write(calendar.dtypes)
 
     json_object = {

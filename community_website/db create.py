@@ -69,7 +69,7 @@ def upload_data():
     # https://discuss.streamlit.io/t/uploading-csv-and-excel-files/10866/2
     sqlite_dbs = [file for file in os.listdir(".") if file.endswith(".db")]
     db_filename = st.selectbox("DB Filename", sqlite_dbs)
-    table_name = st.text_input("Table Name to Insert")
+
     create_connection(db_filename)
     file_path = os.path.join("static", "xlsx", "Etkinlik Takvimi.xlsx")
     date_columns = ["Tarih"]
@@ -80,13 +80,11 @@ def upload_data():
                 file_path=file_path, date_columns=date_columns
             )
 
-    calendar["Tarih"] = pd.to_datetime(calendar["Tarih"])
+    # calendar["Tarih"] = pd.to_datetime(calendar["Tarih"])
     # calendar["Başlangıç Saati"] = calendar["Başlangıç Saati"].apply(pd.Timestamp)
     # calendar["Bitiş Saati"] = pd.to_datetime(calendar["Bitiş Saati"])
-    st.write(calendar.dtypes)
-    calendar.describe()
-    calendar
-    df_schema = {
+
+    df_schema1 = {
         "İsim": NVARCHAR(80),
         "Tarih": Date(),
         "Başlangıç Saati": Time(),
@@ -94,19 +92,74 @@ def upload_data():
         "Düzenleyen": NVARCHAR(80),
     }
 
+    file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
+    desired_date_format = "%d-%m-%Y"
+    date_columns = ["Başlangıç", "Bitiş"]
+    _, center_col, _ = st.columns(3)
+    with center_col:
+        with st.spinner("Veri yükleniyor"):
+            plan = load_excel(
+                file_path=file_path,
+                date_columns=date_columns,
+                new_format=desired_date_format,
+            )
+
+    df_schema2 = {
+        "Görev": NVARCHAR(80),
+        "Başlangıç": Date(),
+        "Bitiş": Date(),
+        "Kulüpler": NVARCHAR(80),
+        "Detay": NVARCHAR(80),
+    }
+
+    file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
+    _, center_col, _ = st.columns(3)
+    with center_col:
+        with st.spinner("Veri yükleniyor"):
+            team = load_excel(
+                file_path=file_path,
+            )
+
+    df_schema3 = {
+        "İsim": NVARCHAR(80),
+        "Grup": NVARCHAR(80),
+        "Rol": NVARCHAR(80),
+        "Linkedin": NVARCHAR(80),
+    }
+
     engine = create_engine("sqlite:///cs_com_db.db")
 
     if st.button("Upload dataframe as a table to db"):
         try:
             calendar.to_sql(
-                name=table_name,
+                name="event_calendar",
                 con=engine,
                 index=False,
                 if_exists="replace",
-                dtype=df_schema,
+                dtype=df_schema1,
             )
             st.write("Data uploaded successfully. These are the first 5 rows.")
             st.dataframe(calendar.head(5))
+
+            plan.to_sql(
+                name="plan",
+                con=engine,
+                index=False,
+                if_exists="replace",
+                dtype=df_schema2,
+            )
+            st.write("Data uploaded successfully. These are the first 5 rows.")
+            st.dataframe(plan.head(5))
+
+            team.to_sql(
+                name="team",
+                con=engine,
+                index=False,
+                if_exists="replace",
+                dtype=df_schema3,
+            )
+            st.write("Data uploaded successfully. These are the first 5 rows.")
+            st.dataframe(team.head(5))
         except Exception as e:
             st.write(e)
 

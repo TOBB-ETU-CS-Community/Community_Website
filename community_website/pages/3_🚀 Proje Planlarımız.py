@@ -1,8 +1,10 @@
 import os
+import sqlite3
 
+import pandas as pd
 import plotly.express as px
 import streamlit as st
-from modules.utils import add_bg_from_local, load_excel, set_page_config
+from modules.utils import add_bg_from_local, set_page_config
 
 
 @st.cache_data
@@ -70,6 +72,7 @@ def main():
         unsafe_allow_html=True,
     )
 
+    """
     file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
     desired_date_format = "%d-%m-%Y"
     date_columns = ["Başlangıç", "Bitiş"]
@@ -81,6 +84,17 @@ def main():
                 date_columns=date_columns,
                 new_format=desired_date_format,
             )
+    """
+
+    db_file = "cs_com_db.db"
+    conn = sqlite3.connect(db_file)
+    query = "SELECT * FROM plan;"
+    query = conn.execute(query)
+    cols = [column[0] for column in query.description]
+    plan = pd.DataFrame.from_records(data=query.fetchall(), columns=cols)
+
+    plan["Başlangıç"] = pd.to_datetime(plan["Başlangıç"])
+    plan["Bitiş"] = pd.to_datetime(plan["Bitiş"])
 
     chart = draw_gantt_chart(plan)
     st.plotly_chart(chart, use_container_width=True, theme="streamlit")

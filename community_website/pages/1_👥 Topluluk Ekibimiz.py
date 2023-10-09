@@ -1,7 +1,9 @@
 import os
+import sqlite3
 
+import pandas as pd
 import streamlit as st
-from modules.utils import add_bg_from_local, load_excel, set_page_config
+from modules.utils import add_bg_from_local, set_page_config
 from streamlit.components.v1 import html
 
 
@@ -35,6 +37,7 @@ def main():
     )
     st.markdown(page_markdown, unsafe_allow_html=True)
 
+    """
     file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
     _, center_col, _ = st.columns(3)
     with center_col:
@@ -42,6 +45,14 @@ def main():
             team = load_excel(
                 file_path=file_path,
             )
+    """
+
+    db_file = "cs_com_db.db"
+    conn = sqlite3.connect(db_file)
+    query = "SELECT * FROM team;"
+    query = conn.execute(query)
+    cols = [column[0] for column in query.description]
+    team = pd.DataFrame.from_records(data=query.fetchall(), columns=cols)
 
     cols = st.columns([1, 1, 1], gap="large")
 
