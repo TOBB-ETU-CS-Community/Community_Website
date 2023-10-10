@@ -30,25 +30,13 @@ def main():
         unsafe_allow_html=True,
     )
 
-    os.path.join("static", "xlsx", "Etkinlik Takvimi.xlsx")
-    """
-    date_columns = ["Tarih"]
-    _, center_col, _ = st.columns(3)
-    with center_col:
-        with st.spinner("Data is loading"):
-            calendar = load_excel(
-                file_path=file_path, date_columns=date_columns
-            )
-    """
-
     db_file = "cs_com_db.db"
     conn = sqlite3.connect(db_file)
-    query = "SELECT * FROM activity;"
-    query = conn.execute(query)
-    cols = [column[0] for column in query.description]
-    calendar = pd.DataFrame.from_records(data=query.fetchall(), columns=cols)
-    st.write(calendar.dtypes)
-    st.write(calendar)
+    query = "SELECT * FROM calendar;"
+    cur = conn.execute(query)
+    cols = [column[0] for column in cur.description]
+    calendar = pd.DataFrame.from_records(data=cur.fetchall(), columns=cols)
+
     calendar["Tarih"] = pd.to_datetime(calendar["Tarih"])
     calendar["Başlangıç Saati"] = pd.to_datetime(
         calendar["Başlangıç Saati"].str[:5], format="%H:%M"
@@ -56,7 +44,6 @@ def main():
     calendar["Bitiş Saati"] = pd.to_datetime(
         calendar["Bitiş Saati"].str[:5], format="%H:%M"
     )
-    st.write(calendar.dtypes)
 
     json_object = {
         "title": {

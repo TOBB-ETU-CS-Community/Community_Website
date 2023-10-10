@@ -72,26 +72,12 @@ def main():
         unsafe_allow_html=True,
     )
 
-    """
-    file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
-    desired_date_format = "%d-%m-%Y"
-    date_columns = ["Başlangıç", "Bitiş"]
-    _, center_col, _ = st.columns(3)
-    with center_col:
-        with st.spinner("Veri yükleniyor"):
-            plan = load_excel(
-                file_path=file_path,
-                date_columns=date_columns,
-                new_format=desired_date_format,
-            )
-    """
-
     db_file = "cs_com_db.db"
     conn = sqlite3.connect(db_file)
     query = "SELECT * FROM plan;"
-    query = conn.execute(query)
-    cols = [column[0] for column in query.description]
-    plan = pd.DataFrame.from_records(data=query.fetchall(), columns=cols)
+    cur = conn.execute(query)
+    cols = [column[0] for column in cur.description]
+    plan = pd.DataFrame.from_records(data=cur.fetchall(), columns=cols)
 
     plan["Başlangıç"] = pd.to_datetime(plan["Başlangıç"])
     plan["Bitiş"] = pd.to_datetime(plan["Bitiş"])

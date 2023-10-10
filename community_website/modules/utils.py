@@ -83,4 +83,5 @@ def load_excel(
                 )
             excel.sort_values(by=date_column, inplace=True)
             excel.reset_index(drop=True, inplace=True)
+    excel = excel.convert_dtypes()
     return excel
