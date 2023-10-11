@@ -8,24 +8,18 @@ from sqlalchemy.types import NVARCHAR, Date, Time
 from utils import add_bg_from_local, load_excel, set_page_config
 
 
-def sqlcol(dfparam):
-    dtypedict = {}
-    for i, j in zip(dfparam.columns, dfparam.dtypes):
-        if "object" in str(j):
-            dtypedict.update({i: sqlalchemy.types.NVARCHAR(length=255)})
-
+def create_schema(df):
+    schema = {}
+    for i, j in zip(df.columns, df.dtypes):
+        if "object" in str(j) or "string" in str(j):
+            schema.update({i: NVARCHAR(length=255)})
         if "datetime" in str(j):
-            dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+            schema.update({i: DateTime()})
         if "float" in str(j):
-            dtypedict.update(
-                {i: sqlalchemy.types.Float(precision=3, asdecimal=True)}
-            )
-
+            schema.update({i: Float(precision=3, asdecimal=True)})
         if "int" in str(j):
-            dtypedict.update({i: sqlalchemy.types.INT()})
-
-    return dtypedict
+            schema.update({i: INT()})
+    return schema
 
 
 def update_database():
@@ -78,13 +72,6 @@ def update_database():
                 file_path=file_path,
             )
 
-    df_schema3 = {
-        "İsim": NVARCHAR(80),
-        "Grup": NVARCHAR(80),
-        "Rol": NVARCHAR(80),
-        "Linkedin": NVARCHAR(80),
-    }
-
     engine = create_engine("sqlite:///cs_com_db.db")
 
     try:
@@ -109,10 +96,9 @@ def update_database():
             con=engine,
             index=False,
             if_exists="replace",
-            dtype=df_schema3,
+            dtype=create_schema(team),
         )
         st.success("Database updated successfuly")
-        main()
     except Exception as e:
         st.error(e)
         return
@@ -142,6 +128,8 @@ def main():
 
     with st.sidebar:
         st.header("Current databases")
+        if st.button("Update databases"):
+            update_database()
         show_tables_query = """
         SELECT
             name
@@ -160,8 +148,6 @@ def main():
                 data=cur.fetchall(), columns=cols
             )
             st.dataframe(results_df)
-        if st.button("Update databases"):
-            update_database()
 
     _, center_col, _ = st.columns([1, 3, 1])
     query = center_col.text_area("SQL Query", height=100)
