@@ -4,7 +4,7 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 from sqlalchemy import create_engine
-from sqlalchemy.types import NVARCHAR, Date, Time
+from sqlalchemy.types import NVARCHAR
 from utils import add_bg_from_local, load_excel, set_page_config
 
 
@@ -36,13 +36,14 @@ def update_database():
     # calendar["Başlangıç Saati"] = calendar["Başlangıç Saati"].apply(pd.Timestamp)
     # calendar["Bitiş Saati"] = pd.to_datetime(calendar["Bitiş Saati"])
 
+    """
     df_schema1 = {
         "İsim": NVARCHAR(80),
         "Tarih": Date(),
         "Başlangıç Saati": Time(),
         "Bitiş Saati": Time(),
         "Düzenleyen": NVARCHAR(80),
-    }
+    }"""
 
     file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
     desired_date_format = "%d-%m-%Y"
@@ -56,6 +57,7 @@ def update_database():
                 new_format=desired_date_format,
             )
 
+    """
     df_schema2 = {
         "Görev": NVARCHAR(80),
         "Başlangıç": Date(),
@@ -63,6 +65,7 @@ def update_database():
         "Kulüpler": NVARCHAR(80),
         "Detay": NVARCHAR(80),
     }
+    """
 
     file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
     _, center_col, _ = st.columns(3)
@@ -80,7 +83,7 @@ def update_database():
             con=engine,
             index=False,
             if_exists="replace",
-            dtype=df_schema1,
+            dtype=create_schema(calendar),
         )
 
         plan.to_sql(
@@ -88,7 +91,7 @@ def update_database():
             con=engine,
             index=False,
             if_exists="replace",
-            dtype=df_schema2,
+            dtype=create_schema(plan),
         )
 
         team.to_sql(
@@ -150,7 +153,7 @@ def main():
             st.dataframe(results_df)
 
     _, center_col, _ = st.columns([1, 3, 1])
-    query = center_col.text_area("SQL Query", height=100)
+    query = center_col.text_area("SQL Query", height=150)
 
     if center_col.button("Run Query"):
         try:
