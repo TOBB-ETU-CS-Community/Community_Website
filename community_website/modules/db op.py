@@ -4,7 +4,7 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 from sqlalchemy import create_engine
-from sqlalchemy.types import NVARCHAR
+from sqlalchemy.types import INT, NVARCHAR, DateTime, Float
 from utils import add_bg_from_local, load_excel, set_page_config
 
 
@@ -23,27 +23,13 @@ def create_schema(df):
 
 
 def update_database():
-    file_path = os.path.join("static", "xlsx", "Etkinlik Takvimi.xlsx")
-    date_columns = ["Tarih"]
+    file_path = os.path.join("static", "xlsx", "Takvim.xlsx")
     _, center_col, _ = st.columns(3)
     with center_col:
         with st.spinner("Data is loading"):
-            calendar = load_excel(
-                file_path=file_path, date_columns=date_columns
-            )
-
-    # calendar["Tarih"] = pd.to_datetime(calendar["Tarih"])
-    # calendar["Başlangıç Saati"] = calendar["Başlangıç Saati"].apply(pd.Timestamp)
-    # calendar["Bitiş Saati"] = pd.to_datetime(calendar["Bitiş Saati"])
-
-    """
-    df_schema1 = {
-        "İsim": NVARCHAR(80),
-        "Tarih": Date(),
-        "Başlangıç Saati": Time(),
-        "Bitiş Saati": Time(),
-        "Düzenleyen": NVARCHAR(80),
-    }"""
+            calendar = load_excel(file_path=file_path)
+    st.write(calendar)
+    st.write(calendar.dtypes)
 
     file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
     desired_date_format = "%d-%m-%Y"
@@ -57,16 +43,6 @@ def update_database():
                 new_format=desired_date_format,
             )
 
-    """
-    df_schema2 = {
-        "Görev": NVARCHAR(80),
-        "Başlangıç": Date(),
-        "Bitiş": Date(),
-        "Kulüpler": NVARCHAR(80),
-        "Detay": NVARCHAR(80),
-    }
-    """
-
     file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
     _, center_col, _ = st.columns(3)
     with center_col:
@@ -76,6 +52,7 @@ def update_database():
             )
 
     engine = create_engine("sqlite:///cs_com_db.db")
+    st.write(create_schema(calendar))
 
     try:
         calendar.to_sql(

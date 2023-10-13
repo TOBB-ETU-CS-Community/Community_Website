@@ -61,7 +61,7 @@ def local_css(file_name):
     st.markdown(style, unsafe_allow_html=True)
 
 
-@st.cache_data
+# @st.cache_data
 def load_excel(
     file_path: str,
     date_columns: list = None,

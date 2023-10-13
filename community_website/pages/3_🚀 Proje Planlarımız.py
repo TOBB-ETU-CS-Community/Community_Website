@@ -79,9 +79,6 @@ def main():
     cols = [column[0] for column in cur.description]
     plan = pd.DataFrame.from_records(data=cur.fetchall(), columns=cols)
 
-    plan["Başlangıç"] = pd.to_datetime(plan["Başlangıç"])
-    plan["Bitiş"] = pd.to_datetime(plan["Bitiş"])
-
     chart = draw_gantt_chart(plan)
     st.plotly_chart(chart, use_container_width=True, theme="streamlit")
 

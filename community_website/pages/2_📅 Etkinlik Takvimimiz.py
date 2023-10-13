@@ -1,6 +1,5 @@
 import json
 import os
-import sqlite3
 
 import pandas as pd
 import streamlit as st
@@ -30,20 +29,10 @@ def main():
         unsafe_allow_html=True,
     )
 
-    db_file = "cs_com_db.db"
-    conn = sqlite3.connect(db_file)
-    query = "SELECT * FROM calendar;"
-    cur = conn.execute(query)
-    cols = [column[0] for column in cur.description]
-    calendar = pd.DataFrame.from_records(data=cur.fetchall(), columns=cols)
-
-    calendar["Tarih"] = pd.to_datetime(calendar["Tarih"])
-    calendar["Başlangıç Saati"] = pd.to_datetime(
-        calendar["Başlangıç Saati"].str[:5], format="%H:%M"
-    )
-    calendar["Bitiş Saati"] = pd.to_datetime(
-        calendar["Bitiş Saati"].str[:5], format="%H:%M"
-    )
+    db_file = "sqlite:///cs_com_db.db"
+    calendar = pd.read_sql_table("calendar", db_file)
+    st.write(calendar)
+    st.write(calendar.dtypes)
 
     json_object = {
         "title": {
@@ -59,14 +48,21 @@ def main():
 
     for i in range(len(calendar)):
         item = {}
-        date = calendar["Tarih"][i]
-        hour = calendar["Başlangıç Saati"][i]
+        start = calendar["Başlangıç"][i]
+        end = calendar["Bitiş"][i]
         item["start_date"] = {
-            "year": f"{date.year}",
-            "month": f"{date.month}",
-            "day": f"{date.day}",
-            "hour": f"{hour.hour}",
-            "minute": f"{hour.minute}",
+            "year": f"{start.year}",
+            "month": f"{start.month}",
+            "day": f"{start.day}",
+            "hour": f"{start.hour}",
+            "minute": f"{start.minute}",
+        }
+        item["end_date"] = {
+            "year": f"{end.year}",
+            "month": f"{end.month}",
+            "day": f"{end.day}",
+            "hour": f"{end.hour}",
+            "minute": f"{end.minute}",
         }
         item["text"] = {
             "headline": calendar["İsim"][i],
