@@ -4,47 +4,25 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 from sqlalchemy import create_engine
-from sqlalchemy.types import INT, NVARCHAR, DateTime, Float
-from utils import add_bg_from_local, load_excel, set_page_config
-
-
-def create_schema(df):
-    schema = {}
-    for i, j in zip(df.columns, df.dtypes):
-        if "object" in str(j) or "string" in str(j):
-            schema.update({i: NVARCHAR(length=255)})
-        if "datetime" in str(j):
-            schema.update({i: DateTime()})
-        if "float" in str(j):
-            schema.update({i: Float(precision=3, asdecimal=True)})
-        if "int" in str(j):
-            schema.update({i: INT()})
-    return schema
+from utils import add_bg_from_local, create_schema, load_excel, set_page_config
 
 
 def update_database():
-    file_path = os.path.join("static", "xlsx", "Takvim.xlsx")
     _, center_col, _ = st.columns(3)
+
+    file_path = os.path.join("static", "xlsx", "Takvim.xlsx")
     with center_col:
         with st.spinner("Data is loading"):
             calendar = load_excel(file_path=file_path)
-    st.write(calendar)
-    st.write(calendar.dtypes)
 
     file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
-    desired_date_format = "%d-%m-%Y"
-    date_columns = ["Başlangıç", "Bitiş"]
-    _, center_col, _ = st.columns(3)
     with center_col:
         with st.spinner("Veri yükleniyor"):
             plan = load_excel(
                 file_path=file_path,
-                date_columns=date_columns,
-                new_format=desired_date_format,
             )
 
     file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
-    _, center_col, _ = st.columns(3)
     with center_col:
         with st.spinner("Veri yükleniyor"):
             team = load_excel(
@@ -52,7 +30,6 @@ def update_database():
             )
 
     engine = create_engine("sqlite:///cs_com_db.db")
-    st.write(create_schema(calendar))
 
     try:
         calendar.to_sql(

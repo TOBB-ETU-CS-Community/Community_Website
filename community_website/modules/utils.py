@@ -85,3 +85,17 @@ def load_excel(
             excel.reset_index(drop=True, inplace=True)
     excel = excel.convert_dtypes()
     return excel
+
+
+def create_schema(df):
+    schema = {}
+    for i, j in zip(df.columns, df.dtypes):
+        if "object" in str(j) or "string" in str(j):
+            schema.update({i: NVARCHAR(length=255)})
+        if "datetime" in str(j):
+            schema.update({i: DateTime()})
+        if "float" in str(j):
+            schema.update({i: Float(precision=3, asdecimal=True)})
+        if "int" in str(j):
+            schema.update({i: INT()})
+    return schema
