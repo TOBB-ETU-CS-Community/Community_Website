@@ -15,17 +15,24 @@ def update_database():
         with st.spinner("Data is loading"):
             calendar = load_excel(file_path=file_path)
 
-    file_path = os.path.join("static", "xlsx", "Aylık Plan.xlsx")
+    file_path = os.path.join("static", "xlsx", "Plan.xlsx")
     with center_col:
         with st.spinner("Veri yükleniyor"):
             plan = load_excel(
                 file_path=file_path,
             )
 
-    file_path = os.path.join("static", "xlsx", "Topluluk Ekibi.xlsx")
+    file_path = os.path.join("static", "xlsx", "Ekip.xlsx")
     with center_col:
         with st.spinner("Veri yükleniyor"):
             team = load_excel(
+                file_path=file_path,
+            )
+
+    file_path = os.path.join("static", "xlsx", "Program.xlsx")
+    with center_col:
+        with st.spinner("Veri yükleniyor"):
+            program = load_excel(
                 file_path=file_path,
             )
 
@@ -39,7 +46,6 @@ def update_database():
             if_exists="replace",
             dtype=create_schema(calendar),
         )
-
         plan.to_sql(
             name="plan",
             con=engine,
@@ -47,13 +53,19 @@ def update_database():
             if_exists="replace",
             dtype=create_schema(plan),
         )
-
         team.to_sql(
             name="team",
             con=engine,
             index=False,
             if_exists="replace",
             dtype=create_schema(team),
+        )
+        program.to_sql(
+            name="program",
+            con=engine,
+            index=False,
+            if_exists="replace",
+            dtype=create_schema(program),
         )
         st.success("Database updated successfuly")
     except Exception as e:

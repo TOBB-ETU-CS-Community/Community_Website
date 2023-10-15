@@ -1,8 +1,8 @@
 import base64
-from datetime import datetime
 
 import pandas as pd
 import streamlit as st
+from sqlalchemy.types import INT, NVARCHAR, DateTime, Float
 
 
 @st.cache_data
@@ -61,28 +61,14 @@ def local_css(file_name):
     st.markdown(style, unsafe_allow_html=True)
 
 
-# @st.cache_data
+@st.cache_data
 def load_excel(
     file_path: str,
-    date_columns: list = None,
-    original_format: str = "%d.%m.%Y",
-    new_format: str = "%Y-%m-%d",
 ):
     excel = pd.read_excel(
         io=file_path,
         sheet_name="Sheet1",
     )
-    if date_columns is not None:
-        for date_column in date_columns:
-            for i in range(len(excel)):
-                date_string = excel[date_column][i]
-                date_object = datetime.strptime(date_string, original_format)
-                new_date_string = date_object.strftime(new_format)
-                excel[date_column][i] = datetime.strptime(
-                    new_date_string, new_format
-                )
-            excel.sort_values(by=date_column, inplace=True)
-            excel.reset_index(drop=True, inplace=True)
     excel = excel.convert_dtypes()
     return excel
 

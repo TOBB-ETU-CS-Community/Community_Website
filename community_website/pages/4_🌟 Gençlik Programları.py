@@ -3,7 +3,7 @@ from datetime import date
 
 import pandas as pd
 import streamlit as st
-from modules.utils import add_bg_from_local, load_excel, set_page_config
+from modules.utils import add_bg_from_local, set_page_config
 from PIL import Image
 
 
@@ -39,17 +39,8 @@ def main():
         unsafe_allow_html=True,
     )
 
-    file_path = os.path.join("static", "xlsx", "Programlar.xlsx")
-    desired_date_format = "%d-%m-%Y"
-    date_columns = ["Bitiş"]
-    _, center_col, _ = st.columns(3)
-    with center_col:
-        with st.spinner("Veri yükleniyor"):
-            programs = load_excel(
-                file_path=file_path,
-                date_columns=date_columns,
-                new_format=desired_date_format,
-            )
+    db_file = "sqlite:///cs_com_db.db"
+    programs = pd.read_sql_table("program", db_file)
 
     choice = st.sidebar.radio(
         "Which programs would you like to see?",

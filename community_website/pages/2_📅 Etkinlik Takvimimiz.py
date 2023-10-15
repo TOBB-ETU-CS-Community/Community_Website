@@ -31,8 +31,6 @@ def main():
 
     db_file = "sqlite:///cs_com_db.db"
     calendar = pd.read_sql_table("calendar", db_file)
-    st.write(calendar)
-    st.write(calendar.dtypes)
 
     json_object = {
         "title": {
