@@ -950,6 +950,18 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-gettext"
+version = "5.0"
+description = "Python Gettext po to mo file compiler."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python-gettext-5.0.tar.gz", hash = "sha256:869af1ea45e3dab6180557259824c2a62f1800e1286226af912431fe75c5084c"},
+    {file = "python_gettext-5.0-py3-none-any.whl", hash = "sha256:083d4c72c5e72a6bd83b0570770792b9a1e572d8ab3e9cba554e0cd4781aa84a"},
+]
+
+[[package]]
 name = "pytz"
 version = "2023.3"
 description = "World timezone definitions, modern and historical"
@@ -1342,6 +1354,21 @@ pymysql = ["pymysql"]
 sqlcipher = ["sqlcipher3-binary"]
 
 [[package]]
+name = "st-pages"
+version = "0.4.5"
+description = "An experimental version of Streamlit Multi-Page Apps"
+category = "main"
+optional = false
+python-versions = ">=3.8, !=2.7.*, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*, !=3.7.*"
+files = [
+    {file = "st_pages-0.4.5-py3-none-any.whl", hash = "sha256:7cc0c9137bc2a3aba2c7918f76a9b220673b4344762544ebf5c5e56d16a6f360"},
+    {file = "st_pages-0.4.5.tar.gz", hash = "sha256:0b95b2ae53e91f9922f2f254b356e1063981b5fcc89a48c4b89011806ccda465"},
+]
+
+[package.dependencies]
+streamlit = ">=1.10.0"
+
+[[package]]
 name = "streamlit"
 version = "1.26.0"
 description = "A faster way to build and share data apps"
@@ -1619,4 +1646,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "bd4a877b14b12f647310206118ba961b95d5a96976c5fa19cf3304444ee35c5c"
+content-hash = "1082c4b3daa1fb493a6853e4d6de9269debd64a1c7c2ac4ee5bf79375204483e"

@@ -1,8 +1,17 @@
 import base64
+import os
+import sys
 
 import pandas as pd
 import streamlit as st
 from sqlalchemy.types import INT, NVARCHAR, DateTime, Float
+
+if sys.platform.startswith("win"):
+    import locale
+
+    if os.getenv("LANG") is None:
+        lang, enc = locale.getdefaultlocale()
+        os.environ["LANG"] = lang
 
 
 @st.cache_data

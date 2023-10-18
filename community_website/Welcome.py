@@ -1,23 +1,28 @@
 import gettext
 import os
-import sys
 
 import streamlit as st
 from modules.utils import add_bg_from_local, set_page_config
+from st_pages import Page, show_pages
 
-if sys.platform.startswith("win"):
-    import locale
-
-    if os.getenv("LANG") is None:
-        lang, enc = locale.getdefaultlocale()
-        os.environ["LANG"] = lang
+show_pages(
+    [
+        Page("community_website/Welcome.py", "Welcome", "👋"),
+        Page("community_website/pages/Team.py", "Team", "👥"),
+        Page("community_website/pages/Calendar.py", "Event Calendar", "📅"),
+        Page("community_website/pages/Plans.py", "Project Plans", "🚀"),
+        Page("community_website/pages/Programs.py", "Youth Programs", "🌟"),
+        Page("community_website/pages/Menu.py", "Biweekly Menu", "🍽️"),
+        Page("community_website/pages/Feedback.py", "Feedback Form", "📝"),
+    ]
+)
 
 
 def trial():
-    for lang in ["es", "en"]:
+    for lang in ["en", "tr"]:
         # set current language
         lang_translations = gettext.translation(
-            "base", localedir="locales", languages=[lang]
+            "base", localedir="locales", languages=[lang], fallback=True
         )
         lang_translations.install()
         # define _ shortcut for translations
@@ -25,6 +30,7 @@ def trial():
 
         # mark a string translatable
         print(_("Hello World"))
+        print(_("trial"))
 
 
 def main():
