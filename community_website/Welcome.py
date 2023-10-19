@@ -6,21 +6,6 @@ from modules.utils import add_bg_from_local, set_page_config
 from st_pages import Page, show_pages
 
 
-def trial():
-    for lang in ["en", "tr"]:
-        # set current language
-        lang_translations = gettext.translation(
-            "base", localedir="locales", languages=[lang], fallback=True
-        )
-        lang_translations.install()
-        # define _ shortcut for translations
-        _ = lang_translations.gettext
-
-        # mark a string translatable
-        print(_("Hello World"))
-        print(_("trial"))
-
-
 def main():
     set_page_config()
 
@@ -47,7 +32,25 @@ def main():
         sidebar_background_img_path=sidebar_background_img_path,
     )
     st.markdown(page_markdown, unsafe_allow_html=True)
-    trial()
+
+    lang_dict = {"English": "en", "Turkish": "tr"}
+    with st.sidebar:
+        lang = st.selectbox(
+            "In which language would you like the website to be displayed?",
+            (
+                "English",
+                "Turkish",
+            ),
+        )
+    lang_translations = gettext.translation(
+        "base", localedir="locales", languages=[lang_dict[lang]], fallback=True
+    )
+    lang_translations.install()
+    _ = lang_translations.gettext
+
+    # mark a string translatable
+    print(_("Hello World"))
+    print(_("trial"))
 
     st.markdown(
         """<h1 style='text-align: center; color: black; font-size: 60px;'> Welcome to the TOBB ETU Computer Science Community
