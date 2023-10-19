@@ -48,13 +48,14 @@ def main():
     lang_translations.install()
     _ = lang_translations.gettext
 
-    # mark a string translatable
-    print(_("Hello World"))
-    print(_("trial"))
+    _("deneme")
+    welcome_message = _(
+        "Welcome to the TOBB ETU Computer Science Community Website"
+    )
+    # el = "👋"
 
     st.markdown(
-        """<h1 style='text-align: center; color: black; font-size: 60px;'> Welcome to the TOBB ETU Computer Science Community
-     Website 👋 </h1> \
+        f"""<h1 style='text-align: center; color: black; font-size: 60px;'> {welcome_message} </h1> \
         <br>""",
         unsafe_allow_html=True,
     )
