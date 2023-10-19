@@ -5,18 +5,6 @@ import streamlit as st
 from modules.utils import add_bg_from_local, set_page_config
 from st_pages import Page, show_pages
 
-show_pages(
-    [
-        Page("community_website/Welcome.py", "Welcome", "👋"),
-        Page("community_website/pages/Team.py", "Team", "👥"),
-        Page("community_website/pages/Calendar.py", "Event Calendar", "📅"),
-        Page("community_website/pages/Plans.py", "Project Plans", "🚀"),
-        Page("community_website/pages/Programs.py", "Youth Programs", "🌟"),
-        Page("community_website/pages/Menu.py", "Biweekly Menu", "🍽️"),
-        Page("community_website/pages/Feedback.py", "Feedback Form", "📝"),
-    ]
-)
-
 
 def trial():
     for lang in ["en", "tr"]:
@@ -35,6 +23,18 @@ def trial():
 
 def main():
     set_page_config()
+
+    show_pages(
+        [
+            Page("community_website/Welcome.py", "Welcome", "👋"),
+            Page("community_website/pages/Team.py", "Team", "👥"),
+            Page("community_website/pages/Calendar.py", "Event Calendar", "📅"),
+            Page("community_website/pages/Plans.py", "Project Plans", "🚀"),
+            Page("community_website/pages/Programs.py", "Youth Programs", "🌟"),
+            Page("community_website/pages/Menu.py", "Biweekly Menu", "🍽️"),
+            Page("community_website/pages/Feedback.py", "Feedback Form", "📝"),
+        ]
+    )
 
     background_img_path = os.path.join(
         "static", "background", "Community Logo.png"
