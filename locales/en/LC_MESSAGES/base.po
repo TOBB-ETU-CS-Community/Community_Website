@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-10-19 11:56+0300\n"
+"POT-Creation-Date: 2023-10-20 21:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,12 @@ msgstr ""
 
 
 #: community_website\Welcome.py:49
-msgid "deneme"
-msgstr "en"
-
-#: community_website\Welcome.py:50
 msgid "Welcome to the TOBB ETU Computer Science Community Website"
-msgstr "Welcome to the TOBB ETU Computer Science Community Website"
+msgstr ""
+
+#: community_website\Welcome.py:67
+msgid ""
+"<p style='text-align: center;  font-size: 20px;'>\n"
+"        {welcome_message}\n"
+"         </p> "
+msgstr ""

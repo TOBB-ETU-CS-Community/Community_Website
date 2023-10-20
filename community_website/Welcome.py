@@ -48,20 +48,15 @@ def main():
     lang_translations.install()
     _ = lang_translations.gettext
 
-    _("deneme")
-    welcome_message = _(
-        "Welcome to the TOBB ETU Computer Science Community Website"
-    )
-    # el = "👋"
-
+    headline = _("Welcome to the TOBB ETU Computer Science Community Website")
     st.markdown(
-        f"""<h1 style='text-align: center; color: black; font-size: 60px;'> {welcome_message} </h1> \
+        f"""<h1 style='text-align: center; color: black; font-size: 60px;'> {headline} 👋 </h1> \
         <br>""",
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        """<p style='text-align: center;  font-size: 20px;'>
+        f"""<p style='text-align: center;  font-size: 20px;'>
         TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community
         is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we
         organize online and face-to-face events, participate in national and international competitions, and develop
@@ -69,7 +64,10 @@ def main():
         education for our community.
         <br> <br>
         You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>
-        </p> """,
+
+
+
+         </p> """,
         unsafe_allow_html=True,
     )
 
