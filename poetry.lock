@@ -950,18 +950,6 @@ files = [
 six = ">=1.5"
 
 [[package]]
-name = "python-gettext"
-version = "5.0"
-description = "Python Gettext po to mo file compiler."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "python-gettext-5.0.tar.gz", hash = "sha256:869af1ea45e3dab6180557259824c2a62f1800e1286226af912431fe75c5084c"},
-    {file = "python_gettext-5.0-py3-none-any.whl", hash = "sha256:083d4c72c5e72a6bd83b0570770792b9a1e572d8ab3e9cba554e0cd4781aa84a"},
-]
-
-[[package]]
 name = "pytz"
 version = "2023.3"
 description = "World timezone definitions, modern and historical"
@@ -1646,4 +1634,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "1082c4b3daa1fb493a6853e4d6de9269debd64a1c7c2ac4ee5bf79375204483e"
+content-hash = "9a7ae3b518bd0349782d6c453747f61003cec2b722852493ffaccb952ac474ba"

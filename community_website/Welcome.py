@@ -1,4 +1,3 @@
-import gettext
 import os
 
 import streamlit as st
@@ -42,13 +41,8 @@ def main():
                 "Turkish",
             ),
         )
-    lang_translations = gettext.translation(
-        "base", localedir="locales", languages=[lang_dict[lang]], fallback=True
-    )
-    lang_translations.install()
-    _ = lang_translations.gettext
 
-    headline = _("Welcome to the TOBB ETU Computer Science Community Website")
+    headline = "Welcome to the TOBB ETU Computer Science Community Website"
     st.markdown(
         f"""<h1 style='text-align: center; color: black; font-size: 60px;'> {headline} 👋 </h1> \
         <br>""",
@@ -64,9 +58,6 @@ def main():
         education for our community.
         <br> <br>
         You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>
-
-
-
          </p> """,
         unsafe_allow_html=True,
     )
