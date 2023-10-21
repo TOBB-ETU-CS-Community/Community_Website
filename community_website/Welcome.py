@@ -1,3 +1,4 @@
+import json
 import os
 
 import streamlit as st
@@ -32,6 +33,19 @@ def main():
     )
     st.markdown(page_markdown, unsafe_allow_html=True)
 
+    msgs = {
+        "headline_welcome": {
+            "en": "Welcome to the TOBB ETU Computer Science Community Website 👋",
+            "tr": "TOBB ETU Bilgisayar Topluluğu Web Sayfasına Hoşgeldiniz 👋",
+        },
+    }
+
+    with open("translations.json", "w") as json_file:
+        json.dump(msgs, json_file)
+
+    with open("translations.json", "r") as json_file:
+        msgs = json.load(json_file)
+
     lang_dict = {"English": "en", "Turkish": "tr"}
     with st.sidebar:
         lang = st.selectbox(
@@ -42,10 +56,10 @@ def main():
             ),
         )
 
-    headline = "Welcome to the TOBB ETU Computer Science Community Website"
     st.markdown(
-        f"""<h1 style='text-align: center; color: black; font-size: 60px;'> {headline} 👋 </h1> \
-        <br>""",
+        f"""<h1 style='text-align: center; color: black; font-size: 60px;'>
+        {msgs["headline_welcome"][lang_dict[lang]]}
+        </h1> <br>""",
         unsafe_allow_html=True,
     )
 
