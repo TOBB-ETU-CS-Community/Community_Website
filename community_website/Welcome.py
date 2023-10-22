@@ -1,4 +1,4 @@
-import json
+import gettext
 import os
 
 import streamlit as st
@@ -33,19 +33,6 @@ def main():
     )
     st.markdown(page_markdown, unsafe_allow_html=True)
 
-    msgs = {
-        "headline_welcome": {
-            "en": "Welcome to the TOBB ETU Computer Science Community Website 👋",
-            "tr": "TOBB ETU Bilgisayar Topluluğu Web Sayfasına Hoşgeldiniz 👋",
-        },
-    }
-
-    with open("translations.json", "w") as json_file:
-        json.dump(msgs, json_file)
-
-    with open("translations.json", "r") as json_file:
-        msgs = json.load(json_file)
-
     lang_dict = {"English": "en", "Turkish": "tr"}
     with st.sidebar:
         lang = st.selectbox(
@@ -56,23 +43,27 @@ def main():
             ),
         )
 
+    lang_translations = gettext.translation(
+        "base", localedir="locales", languages=[lang_dict[lang]], fallback=True
+    )
+    lang_translations.install()
+    _ = lang_translations.gettext
+
     st.markdown(
-        f"""<h1 style='text-align: center; color: black; font-size: 60px;'>
-        {msgs["headline_welcome"][lang_dict[lang]]}
-        </h1> <br>""",
+        """<h1 style='text-align: center; color: black; font-size: 60px;'>
+        {headline_welcome}
+        </h1> <br>""".format(
+            headline_welcome=_("headline_welcome")
+        ),
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        f"""<p style='text-align: center;  font-size: 20px;'>
-        TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community
-        is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we
-        organize online and face-to-face events, participate in national and international competitions, and develop
-        open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of
-        education for our community.
-        <br> <br>
-        You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>
-         </p> """,
+        """<p style='text-align: center;  font-size: 20px;'>
+        {text_welcome}
+         </p> """.format(
+            text_welcome=_("text_welcome")
+        ),
         unsafe_allow_html=True,
     )
 
