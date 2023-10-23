@@ -5,19 +5,47 @@ import streamlit as st
 from modules.utils import add_bg_from_local, set_page_config
 from st_pages import Page, show_pages
 
+if "lang_set" not in st.session_state:
+    st.session_state.lang_set = "en"
+
+
+def set_lang(lang):
+    lang_translations = gettext.translation(
+        "base",
+        localedir="locales",
+        languages=[lang],
+        fallback=True,
+    )
+    lang_translations.install()
+    return lang_translations.gettext
+
 
 def main():
     set_page_config()
 
+    lang_dict = {
+        "English": "en",
+        "Turkish": "tr",
+        "İngilizce": "en",
+        "Türkçe": "tr",
+    }
+    _ = set_lang(st.session_state.lang_set)
+
     show_pages(
         [
-            Page("community_website/Welcome.py", "Welcome", "👋"),
-            Page("community_website/pages/Team.py", "Team", "👥"),
-            Page("community_website/pages/Calendar.py", "Event Calendar", "📅"),
-            Page("community_website/pages/Plans.py", "Project Plans", "🚀"),
-            Page("community_website/pages/Programs.py", "Youth Programs", "🌟"),
-            Page("community_website/pages/Menu.py", "Biweekly Menu", "🍽️"),
-            Page("community_website/pages/Feedback.py", "Feedback Form", "📝"),
+            Page("community_website/Welcome.py", _("Welcome"), "👋"),
+            Page("community_website/pages/Team.py", _("Team"), "👥"),
+            Page(
+                "community_website/pages/Calendar.py", _("Event Calendar"), "📅"
+            ),
+            Page("community_website/pages/Plans.py", _("Project Plans"), "🚀"),
+            Page(
+                "community_website/pages/Programs.py", _("Youth Programs"), "🌟"
+            ),
+            Page("community_website/pages/Menu.py", _("Biweekly Menu"), "🍽️"),
+            Page(
+                "community_website/pages/Feedback.py", _("Feedback Form"), "📝"
+            ),
         ]
     )
 
@@ -33,21 +61,16 @@ def main():
     )
     st.markdown(page_markdown, unsafe_allow_html=True)
 
-    lang_dict = {"English": "en", "Turkish": "tr"}
     with st.sidebar:
         lang = st.selectbox(
-            "In which language would you like the website to be displayed?",
+            _("In which language would you like the website to be displayed?"),
             (
-                "English",
-                "Turkish",
+                _("English"),
+                _("Turkish"),
             ),
         )
-
-    lang_translations = gettext.translation(
-        "base", localedir="locales", languages=[lang_dict[lang]], fallback=True
-    )
-    lang_translations.install()
-    _ = lang_translations.gettext
+        st.session_state.lang_set = lang_dict[lang]
+        _ = set_lang(st.session_state.lang_set)
 
     st.markdown(
         """<h1 style='text-align: center; color: black; font-size: 60px;'>
