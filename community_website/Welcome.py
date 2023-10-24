@@ -2,11 +2,26 @@ import gettext
 import os
 
 import streamlit as st
-from modules.utils import add_bg_from_local, set_page_config
+from modules.utils import add_bg_from_local
 from st_pages import Page, show_pages
 
 if "lang_set" not in st.session_state:
-    st.session_state.lang_set = "en"
+    st.session_state["lang_set"] = "en"
+
+lang_box = {
+    "selectbox_text": {
+        "en": "In which language would you like the website to be displayed?",
+        "tr": "Sayfayı hangi dilde görüntülemek istersiniz?",
+    },
+    "lang1": {
+        "en": "English",
+        "tr": "İngilizce",
+    },
+    "lang2": {
+        "en": "Turkish",
+        "tr": "Türkçe",
+    },
+}
 
 
 def set_lang(lang):
@@ -20,16 +35,34 @@ def set_lang(lang):
     return lang_translations.gettext
 
 
-def main():
-    set_page_config()
+lang_dict = {
+    "English": "en",
+    "Turkish": "tr",
+    "İngilizce": "en",
+    "Türkçe": "tr",
+}
 
-    lang_dict = {
-        "English": "en",
-        "Turkish": "tr",
-        "İngilizce": "en",
-        "Türkçe": "tr",
-    }
-    _ = set_lang(st.session_state.lang_set)
+
+def change_lang():
+    st.session_state.lang_set = lang_dict[st.session_state.lang_selected]
+
+
+st.sidebar.selectbox(
+    lang_box["selectbox_text"][st.session_state["lang_set"]],
+    (
+        lang_box["lang1"][st.session_state["lang_set"]],
+        lang_box["lang2"][st.session_state["lang_set"]],
+    ),
+    key="lang_selected",
+    on_change=change_lang,
+)
+
+
+_ = set_lang(st.session_state.lang_set)
+
+
+def main():
+    # set_page_config()
 
     show_pages(
         [
@@ -60,17 +93,6 @@ def main():
         sidebar_background_img_path=sidebar_background_img_path,
     )
     st.markdown(page_markdown, unsafe_allow_html=True)
-
-    with st.sidebar:
-        lang = st.selectbox(
-            _("In which language would you like the website to be displayed?"),
-            (
-                _("English"),
-                _("Turkish"),
-            ),
-        )
-        st.session_state.lang_set = lang_dict[lang]
-        _ = set_lang(st.session_state.lang_set)
 
     st.markdown(
         """<h1 style='text-align: center; color: black; font-size: 60px;'>
