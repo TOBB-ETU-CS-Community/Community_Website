@@ -15,6 +15,7 @@ plotly = "^5.15.0"
 streamlit-timeline = "^0.0.2"
 sqlalchemy = "^2.0.21"
 st-pages = "^0.4.5"
+translators = "^5.8.7"
 
 
 [tool.poetry.group.dev.dependencies]
