@@ -34,10 +34,15 @@ def set_lang(lang):
     return lang_translations.gettext
 
 
+if "translator" not in st.session_state:
+    st.session_state["translator"] = set_lang(st.session_state["lang_set"])
+
+
 def change_lang():
     st.session_state.lang_set = st.session_state.lang_dict[
         st.session_state.lang_selected
     ]
+    st.session_state["translator"] = set_lang(st.session_state["lang_set"])
 
 
 def main():
@@ -46,7 +51,8 @@ def main():
     st.session_state.lang_selected = st.session_state.inv_lang_dict[
         st.session_state.lang_set
     ]
-    _ = set_lang(st.session_state.lang_set)
+    # set_lang(st.session_state.lang_set)
+    _ = st.session_state["translator"]
     st.sidebar.selectbox(
         _("In which language would you like the website to be displayed?"),
         (
@@ -56,8 +62,9 @@ def main():
         key="lang_selected",
         on_change=change_lang,
     )
+    _ = st.session_state["translator"]
 
-    _ = set_lang(st.session_state.lang_set)
+    # _ = set_lang(st.session_state.lang_set)
 
     show_pages(
         [
