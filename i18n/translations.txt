@@ -32,6 +32,14 @@ msgstr "Feedback Form"
 msgid "In which language would you like the website to be displayed?"
 msgstr "In which language would you like the website to be displayed?"
 
+#: community_website\Welcome.py:55
+msgid "English"
+msgstr "English"
+
+#: community_website\Welcome.py:56
+msgid "Turkish"
+msgstr "Turkish"
+
 #: community_website\Welcome.py:66
 msgid "headline_welcome"
 msgstr "Welcome to the TOBB ETU Computer Science Community Website 👋"
@@ -75,6 +83,14 @@ msgstr "Geri Bildirim Formu"
 #: community_website\Welcome.py:53
 msgid "In which language would you like the website to be displayed?"
 msgstr "Web sayfasını hangi dilde görüntülemek istersiniz?"
+
+#: community_website\Welcome.py:55
+msgid "English"
+msgstr "İngilizce"
+
+#: community_website\Welcome.py:56
+msgid "Turkish"
+msgstr "Türkçe"
 
 #: community_website\Welcome.py:66
 msgid "headline_welcome"

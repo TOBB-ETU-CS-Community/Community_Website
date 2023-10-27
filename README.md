@@ -67,7 +67,7 @@ poetry shell
 2. Run the project:
 
 ```
-streamlit run "community_website\👋 Hoşgeldiniz.py"
+streamlit run "community_website\Welcome.py"
 ```
 
 or click start.bat file
