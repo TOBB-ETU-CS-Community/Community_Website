@@ -1,101 +1,151 @@
 "Content-Type: text/plain; charset=UTF-8\n"
 
-#: community_website\Welcome.py:31
-msgid "Welcome"
-msgstr "Welcome"
 
-#: community_website\Welcome.py:32
-msgid "Team"
-msgstr "Team"
-
-#: community_website\Welcome.py:33
-msgid "Event Calendar"
-msgstr "Event Calendar"
-
-#: community_website\Welcome.py:34
-msgid "Project Plans"
-msgstr "Project Plans"
-
-#: community_website\Welcome.py:35
-msgid "Youth Programs"
-msgstr "Youth Programs"
-
-#: community_website\Welcome.py:36
-msgid "Biweekly Menu"
-msgstr "Biweekly Menu"
-
-#: community_website\Welcome.py:37
-msgid "Feedback Form"
-msgstr "Feedback Form"
-
-#: community_website\Welcome.py:53
+#: community_website\Welcome.py:57 community_website\pages\Feedback.py:38
 msgid "In which language would you like the website to be displayed?"
 msgstr "In which language would you like the website to be displayed?"
 
-#: community_website\Welcome.py:55
+#: community_website\Welcome.py:59 community_website\pages\Feedback.py:40
 msgid "English"
 msgstr "English"
 
-#: community_website\Welcome.py:56
+#: community_website\Welcome.py:60 community_website\pages\Feedback.py:41
 msgid "Turkish"
 msgstr "Turkish"
 
-#: community_website\Welcome.py:66
+#: community_website\Welcome.py:71
+msgid "Welcome"
+msgstr "Welcome"
+
+#: community_website\Welcome.py:72
+msgid "Team"
+msgstr "Team"
+
+#: community_website\Welcome.py:74
+msgid "Event Calendar"
+msgstr "Event Calendar"
+
+#: community_website\Welcome.py:76
+msgid "Project Plans"
+msgstr "Project Plans"
+
+#: community_website\Welcome.py:78
+msgid "Youth Programs"
+msgstr "Youth Programs"
+
+#: community_website\Welcome.py:80
+msgid "Biweekly Menu"
+msgstr "Biweekly Menu"
+
+#: community_website\Welcome.py:82
+msgid "Feedback Form"
+msgstr "Feedback Form"
+
+#: community_website\Welcome.py:103
 msgid "headline_welcome"
 msgstr "Welcome to the TOBB ETU Computer Science Community Website 👋"
 
-#: community_website\Welcome.py:75
+#: community_website\Welcome.py:112
 msgid "text_welcome"
 msgstr "TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we organize online and face-to-face events, participate in national and international competitions, and develop open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of education for our community. <br> <br> You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>"
 
+#: community_website\pages\Feedback.py:64
+msgid "headline_feedback"
+msgstr "Feedback Form 📝"
+
+#: community_website\pages\Feedback.py:73
+msgid "text_feedback"
+msgstr "You can tell us your opinions about the community by filling in the text field below. Thanks!"
+
+#: community_website\pages\Feedback.py:90
+msgid "name"
+msgstr "Your Name"
+
+#: community_website\pages\Feedback.py:91
+msgid "email"
+msgstr "Your Email"
+
+#: community_website\pages\Feedback.py:92
+msgid "feedback"
+msgstr "Your feedback"
+
+#: community_website\pages\Feedback.py:93
+msgid "submit"
+msgstr "Submit"
+
+
 --------------------------------------------------------------------
 --------------------------------------------------------------------
 --------------------------------------------------------------------
 
-#: community_website\Welcome.py:31
-msgid "Welcome"
-msgstr "Hoşgeldiniz"
-
-#: community_website\Welcome.py:32
-msgid "Team"
-msgstr "Ekip"
-
-#: community_website\Welcome.py:33
-msgid "Event Calendar"
-msgstr "Etkinlik Takvimi"
-
-#: community_website\Welcome.py:34
-msgid "Project Plans"
-msgstr "Proje Planları"
-
-#: community_website\Welcome.py:35
-msgid "Youth Programs"
-msgstr "Gençlik Programları"
-
-#: community_website\Welcome.py:36
-msgid "Biweekly Menu"
-msgstr "Haftalık Menü"
-
-#: community_website\Welcome.py:37
-msgid "Feedback Form"
-msgstr "Geri Bildirim Formu"
-
-#: community_website\Welcome.py:53
+#: community_website\Welcome.py:57 community_website\pages\Feedback.py:38
 msgid "In which language would you like the website to be displayed?"
 msgstr "Web sayfasını hangi dilde görüntülemek istersiniz?"
 
-#: community_website\Welcome.py:55
+#: community_website\Welcome.py:59 community_website\pages\Feedback.py:40
 msgid "English"
 msgstr "İngilizce"
 
-#: community_website\Welcome.py:56
+#: community_website\Welcome.py:60 community_website\pages\Feedback.py:41
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: community_website\Welcome.py:66
+#: community_website\Welcome.py:71
+msgid "Welcome"
+msgstr "Hoşgeldiniz"
+
+#: community_website\Welcome.py:72
+msgid "Team"
+msgstr "Ekip"
+
+#: community_website\Welcome.py:74
+msgid "Event Calendar"
+msgstr "Etkinlik Takvimi"
+
+#: community_website\Welcome.py:76
+msgid "Project Plans"
+msgstr "Proje Planları"
+
+#: community_website\Welcome.py:78
+msgid "Youth Programs"
+msgstr "Gençlik Programları"
+
+#: community_website\Welcome.py:80
+msgid "Biweekly Menu"
+msgstr "Haftalık Menü"
+
+#: community_website\Welcome.py:82
+msgid "Feedback Form"
+msgstr "Geri Bildirim Formu"
+
+#: community_website\Welcome.py:103
 msgid "headline_welcome"
 msgstr "TOBB ETU Bilgisayar Topluluğu Web Sayfasına Hoşgeldiniz 👋"
 
-#: community_website\Welcome.py:75
+#: community_website\Welcome.py:112
 msgid "text_welcome"
 msgstr "TOBB ETU Bilgisayar Topluluğu, 2022 yılının Nisan ayında kurulmuş bir öğrenci topluluğudur. Bu topluluğun temel amacı, öğrencilerin kendilerini sosyal ve teknik becerilerde en iyi şekilde geliştirebilmesi için fırsatlar yaratmaktır. Bu amaçla online ya da yüz yüze etkinlikler düzenliyor, ulusal ve uluslararası yarışmalara katılıyor ve açık kaynak kodlu projeler geliştiriyoruz. Türkiye'nin her yerinden ve her eğitim seviyesinden insanla birlikte topluluğumuz için birlikte çalışmaya hazırız. <br> <br> <a href=https://linktr.ee/tobbbilgisayartoplulugu>Linktr.ee</a> adresimizden farklı platformlardaki hesaplarımıza ulaşabilirsiniz."
+
+#: community_website\pages\Feedback.py:64
+msgid "headline_feedback"
+msgstr "Geri Bildirim Formu 📝"
+
+#: community_website\pages\Feedback.py:73
+msgid "text_feedback"
+msgstr "Aşağıdaki metin alanını doldurarak topluluk hakkındaki görüşlerinizi bize iletebilirsiniz. Teşekkürler!"
+
+#: community_website\pages\Feedback.py:90
+msgid "name"
+msgstr "İsminiz"
+
+#: community_website\pages\Feedback.py:91
+msgid "email"
+msgstr "Emailiniz"
+
+#: community_website\pages\Feedback.py:92
+msgid "feedback"
+msgstr "Geri Bildiriminiz"
+
+#: community_website\pages\Feedback.py:93
+msgid "submit"
+msgstr "Gönder"

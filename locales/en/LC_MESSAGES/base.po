@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-10-28 17:49+0300\n"
+"POT-Creation-Date: 2023-10-29 16:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,43 +15,74 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: community_website\Welcome.py:57 community_website\pages\Feedback.py:38
+#: community_website\Welcome.py:57 community_website\pages\Calendar.py:42
+#: community_website\pages\Feedback.py:39 community_website\pages\Menu.py:40
+#: community_website\pages\Plans.py:82 community_website\pages\Programs.py:51
+#: community_website\pages\Team.py:57
 msgid "In which language would you like the website to be displayed?"
 msgstr "In which language would you like the website to be displayed?"
 
-#: community_website\Welcome.py:59 community_website\pages\Feedback.py:40
+#: community_website\Welcome.py:59 community_website\pages\Calendar.py:44
+#: community_website\pages\Feedback.py:41 community_website\pages\Menu.py:42
+#: community_website\pages\Plans.py:84 community_website\pages\Programs.py:53
+#: community_website\pages\Team.py:59
 msgid "English"
 msgstr "English"
 
-#: community_website\Welcome.py:60 community_website\pages\Feedback.py:41
+#: community_website\Welcome.py:60 community_website\pages\Calendar.py:45
+#: community_website\pages\Feedback.py:42 community_website\pages\Menu.py:43
+#: community_website\pages\Plans.py:85 community_website\pages\Programs.py:54
+#: community_website\pages\Team.py:60
 msgid "Turkish"
 msgstr "Turkish"
 
-#: community_website\Welcome.py:71
+#: community_website\Welcome.py:71 community_website\pages\Calendar.py:54
+#: community_website\pages\Feedback.py:51 community_website\pages\Menu.py:52
+#: community_website\pages\Plans.py:94 community_website\pages\Programs.py:63
+#: community_website\pages\Team.py:69
 msgid "Welcome"
 msgstr "Welcome"
 
-#: community_website\Welcome.py:72
+#: community_website\Welcome.py:72 community_website\pages\Calendar.py:55
+#: community_website\pages\Feedback.py:52 community_website\pages\Menu.py:53
+#: community_website\pages\Plans.py:95 community_website\pages\Programs.py:64
+#: community_website\pages\Team.py:70
 msgid "Team"
 msgstr "Team"
 
-#: community_website\Welcome.py:74
+#: community_website\Welcome.py:74 community_website\pages\Calendar.py:56
+#: community_website\pages\Calendar.py:88
+#: community_website\pages\Feedback.py:54 community_website\pages\Menu.py:54
+#: community_website\pages\Plans.py:96 community_website\pages\Programs.py:65
+#: community_website\pages\Team.py:71
 msgid "Event Calendar"
 msgstr "Event Calendar"
 
-#: community_website\Welcome.py:76
+#: community_website\Welcome.py:76 community_website\pages\Calendar.py:57
+#: community_website\pages\Feedback.py:56 community_website\pages\Menu.py:55
+#: community_website\pages\Plans.py:97 community_website\pages\Programs.py:66
+#: community_website\pages\Team.py:72
 msgid "Project Plans"
 msgstr "Project Plans"
 
-#: community_website\Welcome.py:78
+#: community_website\Welcome.py:78 community_website\pages\Calendar.py:58
+#: community_website\pages\Feedback.py:58 community_website\pages\Menu.py:56
+#: community_website\pages\Plans.py:98 community_website\pages\Programs.py:67
+#: community_website\pages\Team.py:73
 msgid "Youth Programs"
 msgstr "Youth Programs"
 
-#: community_website\Welcome.py:80
+#: community_website\Welcome.py:80 community_website\pages\Calendar.py:59
+#: community_website\pages\Feedback.py:60 community_website\pages\Menu.py:57
+#: community_website\pages\Plans.py:99 community_website\pages\Programs.py:68
+#: community_website\pages\Team.py:74
 msgid "Biweekly Menu"
 msgstr "Biweekly Menu"
 
-#: community_website\Welcome.py:82
+#: community_website\Welcome.py:82 community_website\pages\Calendar.py:60
+#: community_website\pages\Feedback.py:62 community_website\pages\Menu.py:58
+#: community_website\pages\Plans.py:100 community_website\pages\Programs.py:69
+#: community_website\pages\Team.py:75
 msgid "Feedback Form"
 msgstr "Feedback Form"
 
@@ -63,26 +94,63 @@ msgstr "Welcome to the TOBB ETU Computer Science Community Website 👋"
 msgid "text_welcome"
 msgstr "TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we organize online and face-to-face events, participate in national and international competitions, and develop open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of education for our community. <br> <br> You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>"
 
-#: community_website\pages\Feedback.py:64
+#: community_website\pages\Calendar.py:77
+msgid "headline_calendar"
+msgstr "You can review our event calendar on the timeline below. 📅"
+
+#: community_website\pages\Calendar.py:90
+msgid "text_calendar"
+msgstr "You can access every event we have held or attended since our establishment in April 2022 through this timeline."
+
+#: community_website\pages\Feedback.py:85
 msgid "headline_feedback"
 msgstr "Feedback Form 📝"
 
-#: community_website\pages\Feedback.py:73
+#: community_website\pages\Feedback.py:94
 msgid "text_feedback"
 msgstr "You can tell us your opinions about the community by filling in the text field below. Thanks!"
 
-#: community_website\pages\Feedback.py:90
+#: community_website\pages\Feedback.py:111
 msgid "name"
 msgstr "Your Name"
 
-#: community_website\pages\Feedback.py:91
+#: community_website\pages\Feedback.py:112
 msgid "email"
 msgstr "Your Email"
 
-#: community_website\pages\Feedback.py:92
+#: community_website\pages\Feedback.py:113
 msgid "feedback"
 msgstr "Your feedback"
 
-#: community_website\pages\Feedback.py:93
+#: community_website\pages\Feedback.py:114
 msgid "submit"
 msgstr "Submit"
+
+#: community_website\pages\Menu.py:75
+msgid "headline_menu"
+msgstr "🍽️ Weekly Menu"
+
+#: community_website\pages\Menu.py:82
+msgid "text_menu"
+msgstr "We are constantly updating the 2-week menu of ETU Kitchen. Bon Appétit 😋"
+
+#: community_website\pages\Plans.py:117
+msgid "headline_plans"
+msgstr "You can review our project plans via the gantt chart below. 🚀"
+
+#: community_website\pages\Programs.py:87
+msgid "headline_programs"
+msgstr "You can find youth programs for university students below.🌟"
+
+#: community_website\pages\Programs.py:96
+msgid "Which programs would you like to see?"
+msgstr "Which programs would you like to see?"
+
+#: community_website\pages\Programs.py:98
+msgid "All programs"
+msgstr "All programs"
+
+#: community_website\pages\Programs.py:99
+#: community_website\pages\Programs.py:102
+msgid "Open programs"
+msgstr "Open programs"
