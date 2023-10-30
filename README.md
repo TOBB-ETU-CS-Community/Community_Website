@@ -70,7 +70,7 @@ poetry shell
 streamlit run "community_website\Welcome.py"
 ```
 
-or click start.bat file
+or click start.bat file in Windows
 
 
 ## Contributing

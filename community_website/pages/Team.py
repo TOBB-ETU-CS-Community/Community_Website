@@ -8,6 +8,23 @@ from modules.utils import add_bg_from_local, set_page_config
 from st_pages import Page, show_pages
 from streamlit.components.v1 import html
 
+if "lang_set" not in st.session_state:
+    st.session_state["lang_set"] = "en"
+
+if "lang_dict" not in st.session_state:
+    st.session_state.lang_dict = {
+        "English": "en",
+        "Turkish": "tr",
+        "İngilizce": "en",
+        "Türkçe": "tr",
+    }
+
+if "inv_lang_dict" not in st.session_state:
+    st.session_state.inv_lang_dict = {
+        "en": "English",
+        "tr": "Türkçe",
+    }
+
 
 def set_lang(lang):
     lang_translations = gettext.translation(
