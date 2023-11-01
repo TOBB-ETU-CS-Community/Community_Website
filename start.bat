@@ -4,4 +4,4 @@ chcp 65001
 
 poetry run streamlit run "community_website\Welcome.py" --server.port 8501
 
-Exit
+pause

@@ -1,9 +1,11 @@
 import base64
 import os
 import sys
+from typing import Union
 
 import pandas as pd
 import streamlit as st
+import translators as ts
 from sqlalchemy.types import INT, NVARCHAR, DateTime, Float
 
 if sys.platform.startswith("win"):
@@ -94,3 +96,45 @@ def create_schema(df):
         if "int" in str(j):
             schema.update({i: INT()})
     return schema
+
+
+def translate_excel(
+    excel_file_path: str,
+    to_language: str,
+    from_language: str,
+    export: bool = False,
+    target_sheet_name: str = "Sheet1",
+) -> Union[pd.DataFrame, None]:
+    df = pd.read_excel(excel_file_path)
+    if df.empty:
+        print("The Excel file is empty")
+        return None
+
+    df = df.applymap(
+        lambda cell: ts.translate_text(
+            query_text=cell, to_language=to_language
+        )
+        if pd.notna(cell) and isinstance(cell, str)
+        else cell
+    )
+    df.columns = [
+        ts.translate_text(
+            query_text=col,
+            to_language=to_language,
+            from_language=from_language,
+        )
+        if isinstance(col, str)
+        else col
+        for col in df.columns
+    ]
+
+    if not export:
+        return df
+    else:
+        index = excel_file_path.find(".xlsx")
+        file_name = excel_file_path[:index]
+        output_file_path = file_name + "_translated.xlsx"
+        df.to_excel(
+            output_file_path, sheet_name=target_sheet_name, index=False
+        )
+        return None

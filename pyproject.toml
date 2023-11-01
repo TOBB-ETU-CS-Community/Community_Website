@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "community_website"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 streamlit = "^1.23.1"
 pandas = "^2.0.2"
 openpyxl = "^3.1.2"
