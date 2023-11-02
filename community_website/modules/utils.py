@@ -101,7 +101,7 @@ def create_schema(df):
 def translate_excel(
     excel_file_path: str,
     to_language: str,
-    from_language: str,
+    from_language: str = "auto",
     export: bool = False,
     target_sheet_name: str = "Sheet1",
 ) -> Union[pd.DataFrame, None]:
@@ -112,7 +112,9 @@ def translate_excel(
 
     df = df.applymap(
         lambda cell: ts.translate_text(
-            query_text=cell, to_language=to_language
+            query_text=cell,
+            to_language=to_language,
+            from_language=from_language,
         )
         if pd.notna(cell) and isinstance(cell, str)
         else cell

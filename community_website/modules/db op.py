@@ -4,7 +4,13 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 from sqlalchemy import create_engine
-from utils import add_bg_from_local, create_schema, load_excel, set_page_config
+from utils import (
+    add_bg_from_local,
+    create_schema,
+    load_excel,
+    set_page_config,
+    translate_excel,
+)
 
 
 def update_database():
@@ -102,7 +108,7 @@ def main():
             SELECT
                 name
             FROM
-                sqlite_schema
+                sqlite_master
             WHERE
                 type ='table' AND
                 name NOT LIKE 'sqlite_%';
@@ -149,14 +155,17 @@ def main():
         """,
             unsafe_allow_html=True,
         )
-        _, center_col, _ = st.columns([1, 3, 1])
+        _, center_col, _ = st.columns([1, 5, 1])
         uploaded_file = center_col.file_uploader(
             label="Upload the excel you want to translate",
             type=["xlx", "xlsx"],
         )
         if uploaded_file is not None:
-            df = load_excel(uploaded_file)
-            st.dataframe(df)
+            # df = load_excel(uploaded_file)
+            df = translate_excel(uploaded_file, to_language="en")
+            _, center_col, _ = st.columns([1, 3, 1])
+            center_col.subheader("Translated DataFrame")
+            center_col.dataframe(df)
 
 
 if __name__ == "__main__":
