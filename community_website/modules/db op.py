@@ -162,10 +162,30 @@ def main():
         )
         if uploaded_file is not None:
             # df = load_excel(uploaded_file)
-            df = translate_excel(uploaded_file, to_language="en")
             _, center_col, _ = st.columns([1, 3, 1])
-            center_col.subheader("Translated DataFrame")
-            center_col.dataframe(df)
+            col1, col2 = center_col.columns(2)
+            if col1.button("Translate and Show"):
+                center_col.subheader("Translated DataFrame")
+                with center_col:
+                    with st.spinner("Translating the excel file"):
+                        df = translate_excel(
+                            uploaded_file,
+                            to_language="en",
+                            from_language="tr",
+                        )
+                center_col.dataframe(df)
+            if col2.button("Translate and Export"):
+                with center_col:
+                    with st.spinner("Translating the excel file"):
+                        df = translate_excel(
+                            uploaded_file,
+                            to_language="en",
+                            from_language="tr",
+                            export=True,
+                        )
+                center_col.success(
+                    f"{uploaded_file.name} successfully exported."
+                )
 
 
 if __name__ == "__main__":

@@ -133,8 +133,9 @@ def translate_excel(
     if not export:
         return df
     else:
-        index = excel_file_path.find(".xlsx")
-        file_name = excel_file_path[:index]
+        name = excel_file_path.name
+        index = name.find(".xlsx")
+        file_name = name[:index]
         output_file_path = file_name + "_translated.xlsx"
         df.to_excel(
             output_file_path, sheet_name=target_sheet_name, index=False
