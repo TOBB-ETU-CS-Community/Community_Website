@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "community-website"
-version = "0.1"
-description = ""
+version = "0.2"
+description = "It is the website of our CS Community"
 authors = ["invictus21 <ataturhan21@gmail.com>"]
 readme = "README.md"
 packages = [{include = "community_website"}]

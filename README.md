@@ -29,7 +29,7 @@ It is the website of our CS Community
 
 Before setting up the project, ensure that you have the following prerequisites installed on your machine:
 
-- Python (version 3.10.10):
+- Python (version 3.9):
   (https://www.python.org/downloads/)
 - Poetry (version 1.4.0):
   (https://python-poetry.org/docs/#installation)
@@ -45,7 +45,7 @@ git clone https://github.com/TOBB-ETU-CS-Community/Community_Website.git
 2. Navigate to the project directory:
 
 ```
-cd Community_Website
+cd community_website
 ```
 
 3. Install project dependencies using Poetry:
