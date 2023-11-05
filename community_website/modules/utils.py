@@ -105,7 +105,11 @@ def translate_excel(
     export: bool = False,
     target_sheet_name: str = "Sheet1",
 ) -> Union[pd.DataFrame, None]:
-    df = pd.read_excel(excel_file_path)
+    try:
+        df = pd.read_excel(excel_file_path)
+    except FileNotFoundError:
+        print("The Excel file was not found")
+        return
     if df.empty:
         print("The Excel file is empty")
         return None
@@ -133,7 +137,10 @@ def translate_excel(
     if not export:
         return df
     else:
-        name = excel_file_path.name
+        try:
+            name = excel_file_path.name
+        except Exception as e:
+            name = excel_file_path
         index = name.find(".xlsx")
         file_name = name[:index]
         output_file_path = file_name + "_translated.xlsx"
