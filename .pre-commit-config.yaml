@@ -59,6 +59,6 @@ repos:
     hooks:
       - id: unittests
         name: run unit tests
-        entry: tests/run_tests.bat
+        entry: tests\\run_tests.bat
         language: script
         pass_filenames: false
