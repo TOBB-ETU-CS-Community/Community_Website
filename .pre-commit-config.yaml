@@ -55,3 +55,10 @@ repos:
       - id: debug-statements
       - id: mixed-line-ending
       - id: detect-private-key
+  - repo: local
+    hooks:
+      - id: unittests
+        name: run unit tests
+        entry: tests/run_tests.bat
+        language: script
+        pass_filenames: false

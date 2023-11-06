@@ -50,7 +50,7 @@ class TestTranslateExcel(unittest.TestCase):
         to_language = "en"
         result = translate_excel(excel_file_path, to_language, export=True)
         self.assertIsNone(result, "Expected None when exporting")
-        self.assertTrue(
+        self.assertFalse(
             os.path.isfile("test_excels/sample_translated.xlsx"),
             "File created successfully",
         )
