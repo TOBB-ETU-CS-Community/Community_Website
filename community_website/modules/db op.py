@@ -184,7 +184,7 @@ def main():
                             export=True,
                         )
                 center_col.success(
-                    f"{uploaded_file.name} successfully exported."
+                    f"{uploaded_file.name} successfully translated and exported."
                 )
 
 
