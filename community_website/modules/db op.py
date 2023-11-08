@@ -13,70 +13,50 @@ from utils import (
 )
 
 
-def update_database():
-    _, center_col, _ = st.columns(3)
+def load_excel_files():
+    en_files_path = os.path.join("static", "xlsx", "en")
+    en_files = [f for f in os.listdir(en_files_path)]
+    tr_files_path = os.path.join("static", "xlsx", "tr")
+    tr_files = [f for f in os.listdir(tr_files_path)]
 
-    file_path = os.path.join("static", "xlsx", "Takvim.xlsx")
+    en_file_path = os.path.join("static", "xlsx", "en")
+    tr_file_path = os.path.join("static", "xlsx", "tr")
+    files = []
+
+    _, center_col, _ = st.columns([1, 5, 1])
     with center_col:
         with st.spinner("Data is loading"):
-            calendar = load_excel(file_path=file_path)
+            for en_file in en_files:
+                file_path = os.path.join(en_file_path, en_file)
+                excel = load_excel(file_path=file_path)
+                files.append(excel)
+            for tr_file in tr_files:
+                file_path = os.path.join(tr_file_path, tr_file)
+                excel = load_excel(file_path=file_path)
+                files.append(excel)
+    return files
 
-    file_path = os.path.join("static", "xlsx", "Plan.xlsx")
-    with center_col:
-        with st.spinner("Veri yükleniyor"):
-            plan = load_excel(
-                file_path=file_path,
-            )
 
-    file_path = os.path.join("static", "xlsx", "Ekip.xlsx")
-    with center_col:
-        with st.spinner("Veri yükleniyor"):
-            team = load_excel(
-                file_path=file_path,
-            )
-
-    file_path = os.path.join("static", "xlsx", "Program.xlsx")
-    with center_col:
-        with st.spinner("Veri yükleniyor"):
-            program = load_excel(
-                file_path=file_path,
-            )
-
+def upload_excel_files_to_sql(files: list):
     engine = create_engine("sqlite:///cs_com_db.db")
-
     try:
-        calendar.to_sql(
-            name="calendar",
-            con=engine,
-            index=False,
-            if_exists="replace",
-            dtype=create_schema(calendar),
-        )
-        plan.to_sql(
-            name="plan",
-            con=engine,
-            index=False,
-            if_exists="replace",
-            dtype=create_schema(plan),
-        )
-        team.to_sql(
-            name="team",
-            con=engine,
-            index=False,
-            if_exists="replace",
-            dtype=create_schema(team),
-        )
-        program.to_sql(
-            name="program",
-            con=engine,
-            index=False,
-            if_exists="replace",
-            dtype=create_schema(program),
-        )
+        for file in files:
+            file.to_sql(
+                name=file.name,
+                con=engine,
+                index=False,
+                if_exists="replace",
+                dtype=create_schema(file),
+            )
         st.success("Database updated successfuly")
     except Exception as e:
         st.error(e)
         return
+
+
+def update_database():
+    files = load_excel_files()
+    upload_excel_files_to_sql(files)
 
 
 def main():

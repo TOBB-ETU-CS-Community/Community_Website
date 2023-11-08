@@ -1,5 +1,6 @@
 import base64
 import os
+import re
 import sys
 from typing import Union
 
@@ -81,6 +82,7 @@ def load_excel(
         sheet_name="Sheet1",
     )
     excel = excel.convert_dtypes()
+    excel.name = re.split(r"[/\\]", file_path)[-1].split(".")[0]
     return excel
 
 
