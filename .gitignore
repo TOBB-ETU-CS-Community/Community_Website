@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # excel file created by test
-tests/test_excels/*.xlsx
+tests/test_excels/sample_translated.xlsx

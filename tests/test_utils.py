@@ -1,7 +1,10 @@
 import os
 import sys
 
-sys.path.append("../community_website")
+path = os.getcwd()
+parent_directory = os.path.abspath(os.path.join(path, os.pardir))
+sys.path.append(parent_directory)
+
 import unittest
 
 import pandas as pd
