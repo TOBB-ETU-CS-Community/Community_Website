@@ -113,7 +113,8 @@ def main():
 
     db_file = "cs_com_db.db"
     conn = sqlite3.connect(db_file)
-    query = "SELECT * FROM team;"
+    table_name = "Team" + "_tr" if st.session_state["lang_set"] == "tr" else ""
+    query = f"SELECT * FROM {table_name};"
     cur = conn.execute(query)
     cols = [column[0] for column in cur.description]
     team = pd.DataFrame.from_records(data=cur.fetchall(), columns=cols)

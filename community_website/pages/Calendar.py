@@ -105,7 +105,10 @@ def main():
     )
 
     db_file = "sqlite:///cs_com_db.db"
-    calendar = pd.read_sql_table("calendar", db_file)
+    table_name = (
+        "Events" + "_tr" if st.session_state["lang_set"] == "tr" else ""
+    )
+    calendar = pd.read_sql_table(table_name, db_file)
 
     json_object = {
         "title": {

@@ -115,7 +115,10 @@ def main():
     )
 
     db_file = "sqlite:///cs_com_db.db"
-    programs = pd.read_sql_table("program", db_file)
+    table_name = (
+        "Programs" + "_tr" if st.session_state["lang_set"] == "tr" else ""
+    )
+    programs = pd.read_sql_table(table_name, db_file)
 
     choice = st.sidebar.radio(
         _("Which programs would you like to see?"),
