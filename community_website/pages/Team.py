@@ -139,15 +139,15 @@ def main():
             )
 
     clubs = [
-        "Blockchain Kulübü",
-        "Yapay Zeka Kulübü",
-        "Oyun Geliştirme Kulübü",
-        "Uygulama Geliştirme Kulübü",
-        "Siber Güvenlik Kulübü",
+        _("Blockchain Kulübü"),
+        _("Yapay Zeka Kulübü"),
+        _("Oyun Geliştirme Kulübü"),
+        _("Uygulama Geliştirme Kulübü"),
+        _("Siber Güvenlik Kulübü"),
     ]
 
     for c in range(len(clubs)):
-        club_team = team.query(f"Grup=='{clubs[c]}'")
+        club_team = team.query(f"{_('Grup')}=='{clubs[c]}'")
 
         with st.expander(clubs[c], expanded=False):
             cols = st.columns(3, gap="large")
