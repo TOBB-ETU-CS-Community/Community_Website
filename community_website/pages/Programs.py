@@ -52,7 +52,7 @@ def change_lang():
 def get_open_programs(programs: pd.DataFrame, today: date):
     open_programs = pd.DataFrame(columns=programs.columns)
     for i in range(len(programs)):
-        if (programs["Bitiş"][i]).date() >= today:
+        if (programs[_("Deadline")][i]).date() >= today:
             open_programs.loc[len(open_programs)] = programs.iloc[i]
     return open_programs
 
@@ -115,9 +115,8 @@ def main():
     )
 
     db_file = "sqlite:///cs_com_db.db"
-    table_name = (
-        "Programs" + "_tr" if st.session_state["lang_set"] == "tr" else ""
-    )
+    table_name = "Programs"
+    table_name += "_tr" if st.session_state["lang_set"] == "tr" else ""
     programs = pd.read_sql_table(table_name, db_file)
 
     choice = st.sidebar.radio(
@@ -133,12 +132,12 @@ def main():
         programs_to_show = programs
 
     for i in range(len(programs_to_show)):
-        _, center_col, _ = st.columns([1, 5, 1])
+        empty_col, center_col, empty_col = st.columns([1, 5, 1])
         center_col.markdown(
             f"""
                 <div style='text-align: center;  font-size: 40px;'>
                 <a href={programs_to_show['Link'][i]}>
-                {programs_to_show["İsim"][i]}
+                {programs_to_show[_("Name")][i]}
                 <br>
                 </a>
                 </div>
@@ -146,11 +145,14 @@ def main():
             unsafe_allow_html=True,
         )
         deadline_date_format = "%d-%m-%Y"
-        deadline = programs_to_show["Bitiş"][i].strftime(deadline_date_format)
+        deadline = programs_to_show[_("Deadline")][i].strftime(
+            deadline_date_format
+        )
+        deadline_text = _("Deadline")
         center_col.markdown(
             f"""
                 <div style='text-align: center;  font-size: 30px;'>
-                Deadline: {deadline}
+                {deadline_text}: {deadline}
                 <br>
                 <br>
                 </div>
@@ -158,7 +160,7 @@ def main():
             unsafe_allow_html=True,
         )
         image_path = os.path.join(
-            "static", "programs", f"{programs_to_show['İsim'][i]}.jpg"
+            "static", "programs", f"{programs_to_show[_('Name')][i]}.jpg"
         )
         image = Image.open(image_path)
         center_col.image(image)

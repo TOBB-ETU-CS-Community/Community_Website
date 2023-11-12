@@ -8,3 +8,6 @@ copy locales\base.pot locales\en\LC_MESSAGES\base.po
 copy locales\base.pot locales\tr\LC_MESSAGES\base.po
 
 pause
+
+
+msgmerge [option] locales\en\LC_MESSAGES\base.po locales\base.pot

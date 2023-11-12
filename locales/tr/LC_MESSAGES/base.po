@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-10-29 16:49+0300\n"
+"POT-Creation-Date: 2023-11-12 13:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,6 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
+
 
 
 #: community_website\Welcome.py:57 community_website\pages\Calendar.py:42
@@ -92,7 +93,7 @@ msgstr "TOBB ETU Bilgisayar Topluluğu Web Sayfasına Hoşgeldiniz 👋"
 
 #: community_website\Welcome.py:112
 msgid "text_welcome"
-msgstr "TOBB ETU Bilgisayar Topluluğu, 2022 yılının Nisan ayında kurulmuş bir öğrenci topluluğudur. Bu topluluğun temel amacı, öğrencilerin kendilerini sosyal ve teknik becerilerde en iyi şekilde geliştirebilmesi için fırsatlar yaratmaktır. Bu amaçla online ya da yüz yüze etkinlikler düzenliyor, ulusal ve uluslararası yarışmalara katılıyor ve açık kaynak kodlu projeler geliştiriyoruz. Türkiye'nin her yerinden ve her eğitim seviyesinden insanla birlikte topluluğumuz için birlikte çalışmaya hazırız. <br> <br> <a href=https://linktr.ee/tobbbilgisayartoplulugu>Linktr.ee</a> adresimizden farklı platformlardaki hesaplarımıza ulaşabilirsiniz."
+msgstr "TOBB ETU Bilgisayar Topluluğu, 2022 yılının Nisan ayında kurulmuş bir öğrenci topluluğudur. Bu topluluğun temel amacı, öğrencilerin kendilerini sosyal ve teknik becerilerde en iyi şekilde geliştirebilmesi için fırsatlar yaratmaktır. Bu amaçla online ya da yüz yüze etkinlikler düzenliyor, ulusal ve uluslararası yarışmalara katılıyor ve açık kaynak kodlu projeler geliştiriyoruz. Türkiye'nin her yerinden ve her eğitim seviyesinden insanla birlikte topluluğumuz için birlikte çalışmaya hazırız. <br> <br> <a href=https://linktr.ee/tobb_cs_community>Linktr.ee</a> adresimizden farklı platformlardaki hesaplarımıza ulaşabilirsiniz."
 
 #: community_website\pages\Calendar.py:77
 msgid "headline_calendar"
@@ -154,3 +155,57 @@ msgstr "Tüm Programlar"
 #: community_website\pages\Programs.py:102
 msgid "Open programs"
 msgstr "Açık Programlar"
+
+
+#: community_website\pages\Programs.py:139
+msgid "Deadline"
+msgstr "Son Başvuru Tarihi"
+
+#: community_website\pages\Team.py:134
+msgid "Blockchain Club"
+msgstr "Blockchain Kulübü"
+
+#: community_website\pages\Team.py:135
+msgid "Artificial Intelligence Club"
+msgstr "Yapay Zeka Kulübü"
+
+#: community_website\pages\Team.py:136
+msgid "Game Development Club"
+msgstr "Oyun Geliştirme Kulübü"
+
+#: community_website\pages\Team.py:137
+msgid "Application Development Club"
+msgstr "Uygulama Geliştirme Kulübü"
+
+#: community_website\pages\Team.py:138
+msgid "Cyber Security Club"
+msgstr "Siber Güvenlik Kulübü"
+
+
+#: community_website\pages\Calendar.py:118 community_website\pages\Plans.py:55
+msgid "Beginning"
+msgstr "Başlangıç"
+
+#: community_website\pages\Calendar.py:119 community_website\pages\Plans.py:56
+msgid "End"
+msgstr "Bitiş"
+
+#: community_website\pages\Calendar.py:135
+msgid "Name"
+msgstr "İsim"
+
+#: community_website\pages\Plans.py:57
+msgid "Project"
+msgstr "Proje"
+
+#: community_website\pages\Plans.py:58
+msgid "Clubs"
+msgstr "Kulüpler"
+
+#: community_website\pages\Plans.py:59
+msgid "Detail"
+msgstr "Detay"
+
+#: community_website\pages\Calendar.py:116 community_website\pages\Team.py:141
+msgid "Group"
+msgstr "Grup"

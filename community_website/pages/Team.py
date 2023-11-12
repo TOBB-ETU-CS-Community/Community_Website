@@ -113,7 +113,8 @@ def main():
 
     db_file = "cs_com_db.db"
     conn = sqlite3.connect(db_file)
-    table_name = "Team" + "_tr" if st.session_state["lang_set"] == "tr" else ""
+    table_name = "Team"
+    table_name += "_tr" if st.session_state["lang_set"] == "tr" else ""
     query = f"SELECT * FROM {table_name};"
     cur = conn.execute(query)
     cols = [column[0] for column in cur.description]
@@ -128,7 +129,9 @@ def main():
             """,
             unsafe_allow_html=True,
         )
-        _, center_col, _ = cols[i].columns([1, 8, 8], gap="small")
+        empty_col, center_col, empty_col = cols[i].columns(
+            [1, 8, 8], gap="small"
+        )
         with center_col:
             html(
                 f"""
@@ -139,15 +142,16 @@ def main():
             )
 
     clubs = [
-        _("Blockchain Kulübü"),
-        _("Yapay Zeka Kulübü"),
-        _("Oyun Geliştirme Kulübü"),
-        _("Uygulama Geliştirme Kulübü"),
-        _("Siber Güvenlik Kulübü"),
+        _("Blockchain Club"),
+        _("Artificial Intelligence Club"),
+        _("Game Development Club"),
+        _("Application Development Club"),
+        _("Cyber Security Club"),
     ]
+    group = _("Group")
 
     for c in range(len(clubs)):
-        club_team = team.query(f"{_('Grup')}=='{clubs[c]}'")
+        club_team = team.query(f"{group}=='{clubs[c]}'")
 
         with st.expander(clubs[c], expanded=False):
             cols = st.columns(3, gap="large")
@@ -158,7 +162,9 @@ def main():
                     """,
                     unsafe_allow_html=True,
                 )
-                _, center_col, _ = cols[i % 3].columns([1, 8, 8], gap="small")
+                empty_col, center_col, empty_col = cols[i % 3].columns(
+                    [1, 8, 8], gap="small"
+                )
                 with center_col:
                     html(
                         f"""

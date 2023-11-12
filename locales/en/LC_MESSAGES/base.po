@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-10-29 16:49+0300\n"
+"POT-Creation-Date: 2023-11-12 13:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgstr "Welcome to the TOBB ETU Computer Science Community Website 👋"
 
 #: community_website\Welcome.py:112
 msgid "text_welcome"
-msgstr "TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we organize online and face-to-face events, participate in national and international competitions, and develop open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of education for our community. <br> <br> You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>"
+msgstr "TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we organize online and face-to-face events, participate in national and international competitions, and develop open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of education for our community. <br> <br> You can reach our different platform accounts at <a href='https://linktr.ee/tobb_cs_community'>Linktr.ee</a>"
 
 #: community_website\pages\Calendar.py:77
 msgid "headline_calendar"
@@ -154,3 +154,57 @@ msgstr "All programs"
 #: community_website\pages\Programs.py:102
 msgid "Open programs"
 msgstr "Open programs"
+
+#: community_website\pages\Programs.py:139
+msgid "Deadline"
+msgstr ""
+
+#: community_website\pages\Team.py:134
+msgid "Blockchain Club"
+msgstr "Blockchain Club"
+
+#: community_website\pages\Team.py:135
+msgid "Artificial Intelligence Club"
+msgstr "Artificial Intelligence Club"
+
+#: community_website\pages\Team.py:136
+msgid "Game Development Club"
+msgstr "Game Development Club"
+
+#: community_website\pages\Team.py:137
+msgid "Application Development Club"
+msgstr "Application Development Club"
+
+#: community_website\pages\Team.py:138
+msgid "Cyber Security Club"
+msgstr "Cyber Security Club"
+
+
+#: community_website\pages\Calendar.py:118 community_website\pages\Plans.py:55
+msgid "Beginning"
+msgstr "Beginning"
+
+#: community_website\pages\Calendar.py:119 community_website\pages\Plans.py:56
+msgid "End"
+msgstr "End"
+
+#: community_website\pages\Calendar.py:135
+msgid "Name"
+msgstr "Name"
+
+
+#: community_website\pages\Plans.py:57
+msgid "Project"
+msgstr "Project"
+
+#: community_website\pages\Plans.py:58
+msgid "Clubs"
+msgstr "Clubs"
+
+#: community_website\pages\Plans.py:59
+msgid "Detail"
+msgstr "Detail"
+
+#: community_website\pages\Calendar.py:116 community_website\pages\Team.py:141
+msgid "Group"
+msgstr "Group"

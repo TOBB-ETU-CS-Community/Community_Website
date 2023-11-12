@@ -105,9 +105,8 @@ def main():
     )
 
     db_file = "sqlite:///cs_com_db.db"
-    table_name = (
-        "Events" + "_tr" if st.session_state["lang_set"] == "tr" else ""
-    )
+    table_name = "Events"
+    table_name += "_tr" if st.session_state["lang_set"] == "tr" else ""
     calendar = pd.read_sql_table(table_name, db_file)
 
     json_object = {
@@ -122,11 +121,12 @@ def main():
         "events": [],
     }
     items = []
+    group = _("Group")
 
     for i in range(len(calendar)):
         item = {}
-        start = calendar["Başlangıç"][i]
-        end = calendar["Bitiş"][i]
+        start = calendar[_("Beginning")][i]
+        end = calendar[_("End")][i]
         item["start_date"] = {
             "year": f"{start.year}",
             "month": f"{start.month}",
@@ -142,8 +142,8 @@ def main():
             "minute": f"{end.minute}",
         }
         item["text"] = {
-            "headline": calendar["İsim"][i],
-            "text": f"<p> {calendar['Düzenleyen'][i]} </p>",
+            "headline": calendar[_("Name")][i],
+            "text": f"<p> {calendar[group][i]} </p>",
         }
 
         items.append(item)

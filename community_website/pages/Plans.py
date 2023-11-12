@@ -52,11 +52,11 @@ def change_lang():
 def draw_gantt_chart(plan):
     fig = px.timeline(
         plan,
-        x_start="Başlangıç",
-        x_end="Bitiş",
-        y="Görev",
-        color="Kulüpler",
-        hover_name="Detay",
+        x_start=_("Beginning"),
+        x_end=_("End"),
+        y=_("Project"),
+        color=_("Clubs"),
+        hover_name=_("Detail"),
     )
     fig.update_layout(
         plot_bgcolor="white",
@@ -149,9 +149,8 @@ def main():
 
     db_file = "cs_com_db.db"
     conn = sqlite3.connect(db_file)
-    table_name = (
-        "Plans" + "_tr" if st.session_state["lang_set"] == "tr" else ""
-    )
+    table_name = "Plans"
+    table_name += "_tr" if st.session_state["lang_set"] == "tr" else ""
     query = f"SELECT * FROM {table_name};"
     cur = conn.execute(query)
     cols = [column[0] for column in cur.description]
