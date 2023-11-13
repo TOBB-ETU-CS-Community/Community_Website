@@ -118,6 +118,8 @@ def main():
     table_name = "Programs"
     table_name += "_tr" if st.session_state["lang_set"] == "tr" else ""
     programs = pd.read_sql_table(table_name, db_file)
+    tr_table_name = "Programs_tr"
+    programs_tr = pd.read_sql_table(tr_table_name, db_file)
 
     choice = st.sidebar.radio(
         _("Which programs would you like to see?"),
@@ -128,11 +130,19 @@ def main():
     )
     if choice == _("Open programs"):
         programs_to_show = get_open_programs(programs, today=date.today())
+        programs_to_show_tr = get_open_programs(
+            programs_tr, today=date.today()
+        )
     else:
         programs_to_show = programs
+        programs_to_show_tr = programs_tr
 
+    empty_col, center_col, empty_col = st.columns([1, 2, 1])
+    if not len(programs_to_show):
+        center_col.subheader("There is no open program right now")
+
+    empty_col, center_col, empty_col = st.columns([1, 5, 1])
     for i in range(len(programs_to_show)):
-        empty_col, center_col, empty_col = st.columns([1, 5, 1])
         center_col.markdown(
             f"""
                 <div style='text-align: center;  font-size: 40px;'>
@@ -160,7 +170,7 @@ def main():
             unsafe_allow_html=True,
         )
         image_path = os.path.join(
-            "static", "programs", f"{programs_to_show[_('Name')][i]}.jpg"
+            "static", "programs", f"{programs_to_show_tr['İsim'][i]}.jpg"
         )
         image = Image.open(image_path)
         center_col.image(image)
