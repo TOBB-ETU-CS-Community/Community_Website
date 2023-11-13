@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2023-11-12 13:47+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=cp1254\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: community_website\Welcome.py:57 community_website\pages\Calendar.py:59
+#: community_website\pages\Feedback.py:56 community_website\pages\Menu.py:57
+#: community_website\pages\Plans.py:100 community_website\pages\Programs.py:68
+#: community_website\pages\Team.py:74
+msgid "In which language would you like the website to be displayed?"
+msgstr ""
+
+#: community_website\Welcome.py:59 community_website\pages\Calendar.py:61
+#: community_website\pages\Feedback.py:58 community_website\pages\Menu.py:59
+#: community_website\pages\Plans.py:102 community_website\pages\Programs.py:70
+#: community_website\pages\Team.py:76
+msgid "English"
+msgstr ""
+
+#: community_website\Welcome.py:60 community_website\pages\Calendar.py:62
+#: community_website\pages\Feedback.py:59 community_website\pages\Menu.py:60
+#: community_website\pages\Plans.py:103 community_website\pages\Programs.py:71
+#: community_website\pages\Team.py:77
+msgid "Turkish"
+msgstr ""
+
+#: community_website\Welcome.py:71 community_website\pages\Calendar.py:71
+#: community_website\pages\Feedback.py:68 community_website\pages\Menu.py:69
+#: community_website\pages\Plans.py:112 community_website\pages\Programs.py:80
+#: community_website\pages\Team.py:86
+msgid "Welcome"
+msgstr ""
+
+#: community_website\Welcome.py:72 community_website\pages\Calendar.py:72
+#: community_website\pages\Feedback.py:69 community_website\pages\Menu.py:70
+#: community_website\pages\Plans.py:113 community_website\pages\Programs.py:81
+#: community_website\pages\Team.py:87
+msgid "Team"
+msgstr ""
+
+#: community_website\Welcome.py:74 community_website\pages\Calendar.py:73
+#: community_website\pages\Calendar.py:107
+#: community_website\pages\Feedback.py:71 community_website\pages\Menu.py:72
+#: community_website\pages\Plans.py:114 community_website\pages\Programs.py:82
+#: community_website\pages\Team.py:88
+msgid "Event Calendar"
+msgstr ""
+
+#: community_website\Welcome.py:76 community_website\pages\Calendar.py:74
+#: community_website\pages\Feedback.py:73 community_website\pages\Menu.py:74
+#: community_website\pages\Plans.py:115 community_website\pages\Programs.py:83
+#: community_website\pages\Team.py:89
+msgid "Project Plans"
+msgstr ""
+
+#: community_website\Welcome.py:78 community_website\pages\Calendar.py:75
+#: community_website\pages\Feedback.py:75 community_website\pages\Menu.py:76
+#: community_website\pages\Plans.py:116 community_website\pages\Programs.py:84
+#: community_website\pages\Team.py:90
+msgid "Youth Programs"
+msgstr ""
+
+#: community_website\Welcome.py:80 community_website\pages\Calendar.py:76
+#: community_website\pages\Feedback.py:77 community_website\pages\Menu.py:78
+#: community_website\pages\Plans.py:117 community_website\pages\Programs.py:85
+#: community_website\pages\Team.py:91
+msgid "Biweekly Menu"
+msgstr ""
+
+#: community_website\Welcome.py:82 community_website\pages\Calendar.py:77
+#: community_website\pages\Feedback.py:79 community_website\pages\Menu.py:80
+#: community_website\pages\Plans.py:118 community_website\pages\Programs.py:86
+#: community_website\pages\Team.py:92
+msgid "Feedback Form"
+msgstr ""
+
+#: community_website\Welcome.py:103
+msgid "headline_welcome"
+msgstr ""
+
+#: community_website\Welcome.py:112
+msgid "text_welcome"
+msgstr ""
+
+#: community_website\pages\Calendar.py:94
+msgid "headline_calendar"
+msgstr ""
+
+#: community_website\pages\Calendar.py:109
+msgid "text_calendar"
+msgstr ""
+
+#: community_website\pages\Calendar.py:116 community_website\pages\Team.py:141
+msgid "Group"
+msgstr ""
+
+#: community_website\pages\Calendar.py:120 community_website\pages\Plans.py:55
+msgid "Beginning"
+msgstr ""
+
+#: community_website\pages\Calendar.py:121 community_website\pages\Plans.py:56
+msgid "End"
+msgstr ""
+
+#: community_website\pages\Calendar.py:137
+msgid "Name"
+msgstr ""
+
+#: community_website\pages\Feedback.py:102
+msgid "headline_feedback"
+msgstr ""
+
+#: community_website\pages\Feedback.py:111
+msgid "text_feedback"
+msgstr ""
+
+#: community_website\pages\Feedback.py:128
+msgid "name"
+msgstr ""
+
+#: community_website\pages\Feedback.py:129
+msgid "email"
+msgstr ""
+
+#: community_website\pages\Feedback.py:130
+msgid "feedback"
+msgstr ""
+
+#: community_website\pages\Feedback.py:131
+msgid "submit"
+msgstr ""
+
+#: community_website\pages\Menu.py:100
+msgid "headline_menu"
+msgstr ""
+
+#: community_website\pages\Menu.py:107
+msgid "text_menu"
+msgstr ""
+
+#: community_website\pages\Plans.py:57
+msgid "Project"
+msgstr ""
+
+#: community_website\pages\Plans.py:58
+msgid "Clubs"
+msgstr ""
+
+#: community_website\pages\Plans.py:59
+msgid "Detail"
+msgstr ""
+
+#: community_website\pages\Plans.py:135
+msgid "headline_plans"
+msgstr ""
+
+#: community_website\pages\Programs.py:104
+msgid "headline_programs"
+msgstr ""
+
+#: community_website\pages\Programs.py:115
+msgid "Which programs would you like to see?"
+msgstr ""
+
+#: community_website\pages\Programs.py:117
+msgid "All programs"
+msgstr ""
+
+#: community_website\pages\Programs.py:118
+#: community_website\pages\Programs.py:121
+msgid "Open programs"
+msgstr ""
+
+#: community_website\pages\Programs.py:140
+msgid "Deadline"
+msgstr ""
+
+#: community_website\pages\Team.py:135
+msgid "Blockchain Club"
+msgstr ""
+
+#: community_website\pages\Team.py:136
+msgid "Artificial Intelligence Club"
+msgstr ""
+
+#: community_website\pages\Team.py:137
+msgid "Game Development Club"
+msgstr ""
+
+#: community_website\pages\Team.py:138
+msgid "Application Development Club"
+msgstr ""
+
+#: community_website\pages\Team.py:139
+msgid "Cyber Security Club"
+msgstr ""
