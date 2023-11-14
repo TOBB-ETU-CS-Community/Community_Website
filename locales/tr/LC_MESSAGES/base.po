@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-11-12 13:47+0300\n"
+"POT-Creation-Date: 2023-11-14 15:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,3 +209,8 @@ msgstr "Detay"
 #: community_website\pages\Calendar.py:116 community_website\pages\Team.py:141
 msgid "Group"
 msgstr "Grup"
+
+
+#: community_website\pages\Programs.py:136
+msgid "There is no open program right now"
+msgstr "Şu anda açık bir program bulunmuyor"

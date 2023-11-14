@@ -1,7 +1,6 @@
 "Content-Type: text/plain; charset=UTF-8\n"
 
 
-
 #: community_website\Welcome.py:57 community_website\pages\Calendar.py:42
 #: community_website\pages\Feedback.py:39 community_website\pages\Menu.py:40
 #: community_website\pages\Plans.py:82 community_website\pages\Programs.py:51
@@ -79,7 +78,7 @@ msgstr "Welcome to the TOBB ETU Computer Science Community Website 👋"
 
 #: community_website\Welcome.py:112
 msgid "text_welcome"
-msgstr "TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we organize online and face-to-face events, participate in national and international competitions, and develop open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of education for our community. <br> <br> You can reach our different platform accounts at <a href='https://linktr.ee/tobbbilgisayartoplulugu'>Linktr.ee</a>"
+msgstr "TOBB ETU Computer Science Community was founded in April 2022 as a student community. The primary goal of this community is to create opportunities for students to develop themselves socially and technically. To achieve this goal, we organize online and face-to-face events, participate in national and international competitions, and develop open-source projects. We are ready to collaborate with people from all over Turkey and from all levels of education for our community. <br> <br> You can reach our different platform accounts at <a href='https://linktr.ee/tobb_cs_community'>Linktr.ee</a>"
 
 #: community_website\pages\Calendar.py:77
 msgid "headline_calendar"
@@ -192,10 +191,16 @@ msgstr "Clubs"
 msgid "Detail"
 msgstr "Detail"
 
---------------------------------------------------------------------
---------------------------------------------------------------------
---------------------------------------------------------------------
+#: community_website\pages\Calendar.py:116 community_website\pages\Team.py:141
+msgid "Group"
+msgstr "Group"
 
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+LANG CHANGE
+--------------------------------------------------------------------
+--------------------------------------------------------------------
 
 
 #: community_website\Welcome.py:57 community_website\pages\Calendar.py:42
@@ -275,7 +280,7 @@ msgstr "TOBB ETU Bilgisayar Topluluğu Web Sayfasına Hoşgeldiniz 👋"
 
 #: community_website\Welcome.py:112
 msgid "text_welcome"
-msgstr "TOBB ETU Bilgisayar Topluluğu, 2022 yılının Nisan ayında kurulmuş bir öğrenci topluluğudur. Bu topluluğun temel amacı, öğrencilerin kendilerini sosyal ve teknik becerilerde en iyi şekilde geliştirebilmesi için fırsatlar yaratmaktır. Bu amaçla online ya da yüz yüze etkinlikler düzenliyor, ulusal ve uluslararası yarışmalara katılıyor ve açık kaynak kodlu projeler geliştiriyoruz. Türkiye'nin her yerinden ve her eğitim seviyesinden insanla birlikte topluluğumuz için birlikte çalışmaya hazırız. <br> <br> <a href=https://linktr.ee/tobbbilgisayartoplulugu>Linktr.ee</a> adresimizden farklı platformlardaki hesaplarımıza ulaşabilirsiniz."
+msgstr "TOBB ETU Bilgisayar Topluluğu, 2022 yılının Nisan ayında kurulmuş bir öğrenci topluluğudur. Bu topluluğun temel amacı, öğrencilerin kendilerini sosyal ve teknik becerilerde en iyi şekilde geliştirebilmesi için fırsatlar yaratmaktır. Bu amaçla online ya da yüz yüze etkinlikler düzenliyor, ulusal ve uluslararası yarışmalara katılıyor ve açık kaynak kodlu projeler geliştiriyoruz. Türkiye'nin her yerinden ve her eğitim seviyesinden insanla birlikte topluluğumuz için birlikte çalışmaya hazırız. <br> <br> <a href=https://linktr.ee/tobb_cs_community>Linktr.ee</a> adresimizden farklı platformlardaki hesaplarımıza ulaşabilirsiniz."
 
 #: community_website\pages\Calendar.py:77
 msgid "headline_calendar"
@@ -341,7 +346,7 @@ msgstr "Açık Programlar"
 
 #: community_website\pages\Programs.py:139
 msgid "Deadline"
-msgstr "Bitiş"
+msgstr "Son Başvuru Tarihi"
 
 #: community_website\pages\Team.py:134
 msgid "Blockchain Club"
@@ -387,3 +392,7 @@ msgstr "Kulüpler"
 #: community_website\pages\Plans.py:59
 msgid "Detail"
 msgstr "Detay"
+
+#: community_website\pages\Calendar.py:116 community_website\pages\Team.py:141
+msgid "Group"
+msgstr "Grup"

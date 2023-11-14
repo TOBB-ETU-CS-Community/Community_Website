@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-11-12 13:47+0300\n"
+"POT-Creation-Date: 2023-11-14 15:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,7 +13,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-
 
 #: community_website\Welcome.py:57 community_website\pages\Calendar.py:42
 #: community_website\pages\Feedback.py:39 community_website\pages\Menu.py:40
@@ -208,3 +207,8 @@ msgstr "Detail"
 #: community_website\pages\Calendar.py:116 community_website\pages\Team.py:141
 msgid "Group"
 msgstr "Group"
+
+
+#: community_website\pages\Programs.py:136
+msgid "There is no open program right now"
+msgstr "There is no open program right now"

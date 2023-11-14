@@ -141,7 +141,7 @@ def main():
 
     empty_col, center_col, empty_col = st.columns([1, 2, 1])
     if not len(programs_to_show):
-        center_col.subheader("There is no open program right now")
+        center_col.subheader(_("There is no open program right now"))
 
     empty_col, center_col, empty_col = st.columns([1, 5, 1])
     for i in range(len(programs_to_show)):
