@@ -15,7 +15,7 @@
 
 It is the website of our CS Community
 
-[WebApp Link](https://tobbetu-bilgisayar-toplulugu.streamlit.app/)
+[WebApp Link](https://tobb-cs-community.streamlit.app)
 
 ## Table of Contents
 
@@ -67,7 +67,7 @@ poetry shell
 2. Run the project:
 
 ```
-streamlit run "community_website\Welcome.py"
+streamlit run "community_website/Welcome.py"
 ```
 
 or click start.bat file in Windows

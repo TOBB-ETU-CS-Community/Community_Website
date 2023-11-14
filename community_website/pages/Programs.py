@@ -130,9 +130,11 @@ def main():
     )
     if choice == _("Open programs"):
         programs_to_show = get_open_programs(programs, today=date.today())
-        programs_to_show_tr = get_open_programs(
-            programs_tr, today=date.today()
-        )
+        open_programs = pd.DataFrame(columns=programs_tr.columns)
+        for i in range(len(programs_tr)):
+            if (programs_tr["Son Başvuru Tarihi"][i]).date() >= date.today():
+                open_programs.loc[len(open_programs)] = programs.iloc[i]
+        programs_to_show_tr = open_programs
     else:
         programs_to_show = programs
         programs_to_show_tr = programs_tr
