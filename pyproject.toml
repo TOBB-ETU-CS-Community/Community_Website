@@ -1,26 +1,25 @@
 [tool.poetry]
 name = "community-website"
-version = "0.2"
-description = "It is the website of our CS Community"
+version = "0.3"
+description = ""
 authors = ["invictus21 <ataturhan21@gmail.com>"]
+license = "GLPv3"
 readme = "README.md"
 packages = [{include = "community_website"}]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 streamlit = "^1.23.1"
 pandas = "^2.0.2"
 openpyxl = "^3.1.2"
 plotly = "^5.15.0"
-streamlit-timeline = "^0.0.2"
 sqlalchemy = "^2.0.21"
 st-pages = "^0.4.5"
 translators = "^5.8.7"
-
+streamlit-timeline = "0.0.1"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.3.2"
-sourcery = "^1.5.0"
 
 [build-system]
 requires = ["poetry-core"]
