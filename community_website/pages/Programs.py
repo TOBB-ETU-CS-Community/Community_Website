@@ -86,7 +86,6 @@ def main():
             Page(
                 "community_website/pages/Programs.py", _("Youth Programs"), "🌟"
             ),
-            Page("community_website/pages/Menu.py", _("Biweekly Menu"), "🍽️"),
             Page(
                 "community_website/pages/Feedback.py", _("Feedback Form"), "📝"
             ),
