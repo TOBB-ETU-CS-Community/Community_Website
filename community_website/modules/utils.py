@@ -2,7 +2,7 @@ import base64
 import os
 import re
 import sys
-from typing import Union
+from typing import Any, Dict, Union
 
 import pandas as pd
 import streamlit as st
@@ -18,7 +18,9 @@ if sys.platform.startswith("win"):
 
 
 @st.cache_data
-def add_bg_from_local(background_img_path, sidebar_background_img_path):
+def add_bg_from_local(
+    background_img_path: str, sidebar_background_img_path: str
+) -> str:
     with open(background_img_path, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
     with open(sidebar_background_img_path, "rb") as image_file:
@@ -37,7 +39,7 @@ def add_bg_from_local(background_img_path, sidebar_background_img_path):
     </style>"""
 
 
-def set_page_config():
+def set_page_config() -> None:
     st.set_page_config(
         page_title="CS Community",
         page_icon="💻",
@@ -52,7 +54,7 @@ def set_page_config():
     )
 
 
-def local_css(file_name):
+def local_css(file_name: str) -> None:
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     style = """<style>
@@ -74,9 +76,7 @@ def local_css(file_name):
 
 
 @st.cache_data
-def load_excel(
-    file_path: str,
-):
+def load_excel(file_path: str) -> pd.DataFrame:
     excel = pd.read_excel(
         io=file_path,
         sheet_name="Sheet1",
@@ -86,7 +86,7 @@ def load_excel(
     return excel
 
 
-def create_schema(df):
+def create_schema(df: pd.DataFrame) -> Dict[str, Any]:
     schema = {}
     for i, j in zip(df.columns, df.dtypes):
         if "object" in str(j) or "string" in str(j):
