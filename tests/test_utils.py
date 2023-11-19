@@ -1,4 +1,5 @@
 import os
+import smtplib
 import sys
 
 path = os.getcwd()
@@ -9,8 +10,9 @@ import unittest
 
 import pandas as pd
 
-from community_website.modules.utils import translate_excel
+from ..community_website.modules.utils import translate_excel
 
+from ..community_website.modules.utils import get_context, starttls, login, create_mail, sendmail
 
 class TestTranslateExcel(unittest.TestCase):
     def test_nonexistent_excel_file(self):
@@ -52,6 +54,45 @@ class TestTranslateExcel(unittest.TestCase):
             "File created successfully",
         )
 
+class TestSendingEmails(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        
+        SENDER_EMAIL = "" # Topluluk gmaili gelecek
+        PASSWORD = "" # Topluluk gmail şifresi gelecek. Ayrıntıları aşağıda. 
+        """
+            Normal gmail şifresi değil, Uygulama şifresi - App password oluşturulup buraya girilmesi gerekiyor.
+            Bunun için de 2-Step Verification ı açmak gerekiyor, 2-Step Verification ı açtıktan sonra onun ayarlarından App password oluşturulabiliyor.
+        """
+
+        # ---- Set up Server ----
+        PORT = 587
+        SMTP_SERVER = "smtp.gmail.com"
+        self.server = smtplib.SMTP(SMTP_SERVER, PORT)
+
+        # ---- StartTLS ----
+        context = get_context()
+        self.stls = starttls(server=self.server, context=context) 
+
+        # ---- Log in to the Sender Email ----
+        self.log = login(server=self.server, sender_email=SENDER_EMAIL, sender_password=PASSWORD)
+
+        # ---- Send mail to the receivers (Email List)----
+        email_list = ["zedopdir@gmail.com","ezrealopdir@gmail.com"]
+        mail = create_mail(sender_email=SENDER_EMAIL, subject="Deneme Subject", message="Deneme message qweqweqwedew lorem ipsum", email_list=email_list)
+        self.sendm = sendmail(server=self.server, sender_email=SENDER_EMAIL, email_list=email_list, mail=mail)
+        
+        self.server.close()
+
+    def test_starttls(self):
+        self.assertTupleEqual(self.stls, (220, b'2.0.0 Ready to start TLS')) # starttls: Returns this tuple when Starting TLS is successful.
+        
+    def test_login(self):
+        self.assertTupleEqual(self.log, (235, b'2.7.0 Accepted')) # login: Returns this tuple when Logging in to the sender_email is successful.
+    
+    def test_sendmail(self):
+        self.assertDictEqual(self.sendm, {}) # sendmail: Returns dict of unsuccessful mails. If empty dict, all of them are successful.
+          
 
 if __name__ == "__main__":
     unittest.main()
