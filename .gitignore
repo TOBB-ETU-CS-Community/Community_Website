@@ -158,3 +158,6 @@ cython_debug/
 
 # excel file created by test
 tests/test_excels/sample_translated.xlsx
+
+# streamlit secrets file
+.streamlit/secrets.toml

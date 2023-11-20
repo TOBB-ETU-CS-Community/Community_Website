@@ -8,6 +8,7 @@ from utils import (
     add_bg_from_local,
     create_schema,
     load_excel,
+    send_emails,
     set_page_config,
     translate_excel,
 )
@@ -77,7 +78,7 @@ def main():
     with st.sidebar:
         st.selectbox(
             "Choose the operation you want to do",
-            ("Database Operations", "Excel Operations"),
+            ("Database Operations", "Excel Operations", "Send Emails"),
             key="op_type",
         )
         if st.session_state.op_type == "Database Operations":
@@ -166,6 +167,27 @@ def main():
                 center_col.success(
                     f"{uploaded_file.name} successfully translated and exported."
                 )
+    elif st.session_state.op_type == "Send Emails":
+        st.markdown(
+            """<h1 style='text-align: center; color: black; font-size: 40px;'> Send Emails </h1>
+        """,
+            unsafe_allow_html=True,
+        )
+        _, center_col, _ = st.columns([1, 3, 1])
+
+        subject = center_col.text_input("Email subject")
+        message = center_col.text_area("Email body", height=150)
+        email_list = ["ataturhan21@gmail.com", "kuantum21fizik@gmail.com"]
+
+        if center_col.button("Send"):
+            try:
+                send_emails(
+                    subject=subject, message=message, email_list=email_list
+                )
+                center_col.success("Operation executed successfuly")
+            except Exception as e:
+                center_col.error(e)
+                return
 
 
 if __name__ == "__main__":

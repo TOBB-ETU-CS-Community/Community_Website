@@ -1,17 +1,16 @@
 import base64
 import os
 import re
+import smtplib
+import ssl
 import sys
+from email.mime.text import MIMEText
 from typing import Any, Dict, Union
 
 import pandas as pd
 import streamlit as st
 import translators as ts
 from sqlalchemy.types import INT, NVARCHAR, DateTime, Float
-
-import ssl, smtplib
-from email.mime.text import MIMEText
-
 
 if sys.platform.startswith("win"):
     import locale
@@ -155,7 +154,8 @@ def translate_excel(
         )
         return None
 
-def send_emails(subject : str, message: str, email_list: list):
+
+def send_emails(subject: str, message: str, email_list: list):
     """
     Sends an email to multiple recipients.
 
@@ -164,7 +164,7 @@ def send_emails(subject : str, message: str, email_list: list):
     - message (str): The content or body of the email.
     - email_list (list): A list of email addresses to which the email will be sent.
 
-    Returns:c
+    Returns:
     - None
 
     Example Usage:
@@ -177,9 +177,13 @@ def send_emails(subject : str, message: str, email_list: list):
     - Ensure that the SMTP server configurations and credentials are properly set before using this function.
     - Be cautious about sending mass emails to avoid being marked as spam.
     """
-    
-    SENDER_EMAIL = "" # Topluluk gmaili gelecek
-    PASSWORD = "" # Topluluk gmail şifresi gelecek. Ayrıntıları aşağıda. 
+
+    SENDER_EMAIL = (
+        "tobb.bilgisayar.toplulugu@gmail.com"  # Topluluk gmaili gelecek
+    )
+    PASSWORD = st.secrets[
+        "app_pass"
+    ]  # Topluluk gmail şifresi gelecek. Ayrıntıları aşağıda.
     """
         Normal gmail şifresi değil, Uygulama şifresi - App password oluşturulup buraya girilmesi gerekiyor.
         Bunun için de 2-Step Verification ı açmak gerekiyor, 2-Step Verification ı açtıktan sonra onun ayarlarından App password oluşturulabiliyor.
@@ -187,7 +191,7 @@ def send_emails(subject : str, message: str, email_list: list):
 
     # ---- SMTP Server Config ----
     port = 587
-    SMTP_server= "smtp.gmail.com"
+    SMTP_server = "smtp.gmail.com"
 
     # ---- Set up Server ----
     server = smtplib.SMTP(SMTP_server, port)
@@ -200,26 +204,45 @@ def send_emails(subject : str, message: str, email_list: list):
     login(server=server, sender_email=SENDER_EMAIL, sender_password=PASSWORD)
 
     # ---- Send mail to the receivers (Email List) ----
-    mail = create_mail(sender_email=SENDER_EMAIL, message=message, subject=subject, email_list=email_list)
-    sendmail(server=server, sender_email=SENDER_EMAIL, email_list=email_list, mail=mail)
+    mail = create_mail(
+        sender_email=SENDER_EMAIL,
+        message=message,
+        subject=subject,
+        email_list=email_list,
+    )
+    sendmail(
+        server=server,
+        sender_email=SENDER_EMAIL,
+        email_list=email_list,
+        mail=mail,
+    )
 
     server.quit()
 
-def create_mail(sender_email: str, message: str, subject: str, email_list: list) -> MIMEText:
-    mail = MIMEText(message, "html","utf-8")
+
+def create_mail(
+    sender_email: str, message: str, subject: str, email_list: list
+) -> MIMEText:
+    mail = MIMEText(message, "html", "utf-8")
     mail["From"] = sender_email
     mail["Subject"] = subject
-    mail["To"] = ','.join(email_list)
+    mail["To"] = ",".join(email_list)
     return mail.as_string()
+
 
 def starttls(server: smtplib.SMTP, context: ssl.SSLContext):
     return server.starttls(context=context)
 
+
 def login(server: smtplib.SMTP, sender_email: str, sender_password: str):
     return server.login(sender_email, sender_password)
 
-def sendmail(server: smtplib.SMTP, sender_email: str, email_list: list, mail: str):
+
+def sendmail(
+    server: smtplib.SMTP, sender_email: str, email_list: list, mail: str
+):
     return server.sendmail(sender_email, email_list, mail)
+
 
 def get_context():
     return ssl.create_default_context()
