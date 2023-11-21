@@ -178,16 +178,8 @@ def send_emails(subject: str, message: str, email_list: list):
     - Be cautious about sending mass emails to avoid being marked as spam.
     """
 
-    SENDER_EMAIL = (
-        "tobb.bilgisayar.toplulugu@gmail.com"  # Topluluk gmaili gelecek
-    )
-    PASSWORD = st.secrets[
-        "app_pass"
-    ]  # Topluluk gmail şifresi gelecek. Ayrıntıları aşağıda.
-    """
-        Normal gmail şifresi değil, Uygulama şifresi - App password oluşturulup buraya girilmesi gerekiyor.
-        Bunun için de 2-Step Verification ı açmak gerekiyor, 2-Step Verification ı açtıktan sonra onun ayarlarından App password oluşturulabiliyor.
-    """
+    SENDER_EMAIL = st.secrets["email"]
+    PASSWORD = st.secrets["app_pass"]
 
     # ---- SMTP Server Config ----
     port = 587
