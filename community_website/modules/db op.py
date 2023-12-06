@@ -184,7 +184,7 @@ def main():
                 send_emails(
                     subject=subject, message=message, email_list=email_list
                 )
-                center_col.success("Operation executed successfuly")
+                center_col.success("Operation executed successfully")
             except Exception as e:
                 center_col.error(e)
                 return

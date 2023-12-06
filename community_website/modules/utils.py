@@ -157,42 +157,6 @@ def translate_excel(
 
 
 def send_emails(subject: str, message: str, email_list: list):
-    print("try")
-    SENDER_EMAIL = st.secrets["email"]
-    PASSWORD = st.secrets["app_pass"]
-    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
-        smtp.ehlo()
-        smtp.starttls()
-        smtp.ehlo()
-        smtp.login(SENDER_EMAIL, PASSWORD)
-        subject = "My first email"
-        msg = "how are you"
-        smtp.sendmail(SENDER_EMAIL, "ataturhan21@gmail.com", msg)
-
-
-def send_email(subject: str, message: str, email_list: list):
-    msg = EmailMessage()
-    msg.set_content(message)
-
-    SENDER_EMAIL = st.secrets["email"]
-    PASSWORD = st.secrets["app_pass"]
-    # me == the sender's email address
-    # you == the recipient's email address
-    msg["Subject"] = "yes"
-    msg["From"] = SENDER_EMAIL
-    msg["To"] = "ataturhan21@gmail.com"
-
-    # Login
-    s = server = smtplib.SMTP("smtp.gmail.com", 587)
-    s.starttls()
-    s.login(SENDER_EMAIL, PASSWORD)
-
-    # Sending the message
-    s.send_message(msg)
-    s.quit()
-
-
-def send_emai(subject: str, message: str, email_list: list):
     """
     Sends an email to multiple recipients.
 
@@ -223,7 +187,7 @@ def send_emai(subject: str, message: str, email_list: list):
     SMTP_server = "smtp.gmail.com"
 
     # ---- Set up Server ----
-    server = smtplib.SMTP(SMTP_server, port, SENDER_EMAIL, timeout=120)
+    server = smtplib.SMTP(SMTP_server, port)
 
     # ---- StartTLS ----
     context = ssl.create_default_context()
